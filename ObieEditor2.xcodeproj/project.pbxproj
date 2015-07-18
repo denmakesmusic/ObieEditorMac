@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8915689B12EB63C300F4847E /* Parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8915689A12EB63C300F4847E /* Parameter.h */; };
+		8915C5870636EEBF003AE2D1 /* GetPatchPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8915C5860636EEBF003AE2D1 /* GetPatchPanel.nib */; };
+		8915C59C0636F2CA003AE2D1 /* GetPatchPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8915C59A0636F2CA003AE2D1 /* GetPatchPanel.h */; };
+		8915C59D0636F2CA003AE2D1 /* GetPatchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915C59B0636F2CA003AE2D1 /* GetPatchPanel.m */; };
+		8917FB38063A5AEB00CBA672 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8917FB37063A5AEB00CBA672 /* PreferencePanes.framework */; };
+		8917FB45063A5DC300CBA672 /* PrefPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8917FB43063A5DC300CBA672 /* PrefPanel.nib */; };
+		8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */; };
+		8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */; };
+		8917FB8D063A788D00CBA672 /* StorePatchPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */; };
+		8917FB90063A7AAD00CBA672 /* StorePatchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */; };
+		8917FB91063A7AAD00CBA672 /* StorePatchPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */; };
+		891806E7063C096600C8B324 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 891806E6063C096600C8B324 /* help.html */; };
+		891E5C710623302B000F7105 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 891E5C6F0623302B000F7105 /* Controller.h */; };
+		891E5C720623302B000F7105 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E5C700623302B000F7105 /* Controller.m */; };
+		891E5C9B06234CE0000F7105 /* MatrixPatchController.h in Headers */ = {isa = PBXBuildFile; fileRef = 891E5C9906234CE0000F7105 /* MatrixPatchController.h */; };
+		891E5C9C06234CE0000F7105 /* MatrixPatchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E5C9A06234CE0000F7105 /* MatrixPatchController.m */; };
+		8923F6550625CB34007C5516 /* MIDIDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8923F6530625CB34007C5516 /* MIDIDriver.h */; };
+		8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8923F6540625CB34007C5516 /* MIDIDriver.m */; };
+		8923F65A0625CB55007C5516 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8923F6590625CB55007C5516 /* CoreMIDI.framework */; };
+		8943B3430645489E005550BF /* oberheim2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8943B3420645489E005550BF /* oberheim2.jpg */; };
+		894B459E13B628B300AFCC6B /* PatchNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 894B459C13B628B200AFCC6B /* PatchNameFormatter.h */; };
+		894B459F13B628B300AFCC6B /* PatchNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B459D13B628B300AFCC6B /* PatchNameFormatter.m */; };
+		8965BFC606249F7B0002EF30 /* M1000.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8965BFC506249F7B0002EF30 /* M1000.nib */; };
+		898F13B80644F67F000D00FE /* newicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 898F13B70644F67F000D00FE /* newicon.icns */; };
+		89B151620705B9810084C6A4 /* StoreSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 89B151610705B9810084C6A4 /* StoreSheet.nib */; };
+		89BC1E1C08B71FE50042F902 /* ParamCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC1E1408B71FE50042F902 /* ParamCheckbox.h */; };
+		89BC1E1D08B71FE50042F902 /* ParamCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC1E1508B71FE50042F902 /* ParamCheckbox.m */; };
+		89BC1E1E08B71FE50042F902 /* ParamPopUpButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC1E1608B71FE50042F902 /* ParamPopUpButton.h */; };
+		89BC1E1F08B71FE50042F902 /* ParamPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC1E1708B71FE50042F902 /* ParamPopUpButton.m */; };
+		89BC1E2008B71FE50042F902 /* ParamSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC1E1808B71FE50042F902 /* ParamSlider.h */; };
+		89BC1E2108B71FE50042F902 /* ParamSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC1E1908B71FE50042F902 /* ParamSlider.m */; };
+		89BC1E2208B71FE50042F902 /* ParamTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC1E1A08B71FE50042F902 /* ParamTextField.h */; };
+		89BC1E2308B71FE50042F902 /* ParamTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC1E1B08B71FE50042F902 /* ParamTextField.m */; };
+		89BC1E3208B720390042F902 /* Description.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC1E3008B720390042F902 /* Description.h */; };
+		89BC1E3308B720390042F902 /* Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC1E3108B720390042F902 /* Description.m */; };
+		89BC1ECA08B731540042F902 /* sounddesc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89BC1EC908B731540042F902 /* sounddesc.plist */; };
+		8D15AC290486D014006FF6A4 /* ObieEditor_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCF750370BD2300C91783 /* ObieEditor_Prefix.pch */; };
+		8D15AC2A0486D014006FF6A4 /* MyDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */; };
+		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
+		2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
+		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32DBCF750370BD2300C91783 /* ObieEditor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObieEditor_Prefix.pch; sourceTree = "<group>"; };
+		8915689A12EB63C300F4847E /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
+		8915C5860636EEBF003AE2D1 /* GetPatchPanel.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = GetPatchPanel.nib; sourceTree = "<group>"; };
+		8915C59A0636F2CA003AE2D1 /* GetPatchPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPatchPanel.h; sourceTree = "<group>"; };
+		8915C59B0636F2CA003AE2D1 /* GetPatchPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPatchPanel.m; sourceTree = "<group>"; };
+		8917FB37063A5AEB00CBA672 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
+		8917FB44063A5DC300CBA672 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PrefPanel.nib; sourceTree = "<group>"; };
+		8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ObiePrefPanel.h; sourceTree = "<group>"; };
+		8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ObiePrefPanel.m; sourceTree = "<group>"; };
+		8917FB8C063A788D00CBA672 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/StorePatchPanel.nib; sourceTree = "<group>"; };
+		8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = StorePatchPanel.m; sourceTree = "<group>"; };
+		8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = StorePatchPanel.h; sourceTree = "<group>"; };
+		891806E6063C096600C8B324 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		891E5C6F0623302B000F7105 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		891E5C700623302B000F7105 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		891E5C9906234CE0000F7105 /* MatrixPatchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixPatchController.h; sourceTree = "<group>"; };
+		891E5C9A06234CE0000F7105 /* MatrixPatchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixPatchController.m; sourceTree = "<group>"; };
+		8923F6530625CB34007C5516 /* MIDIDriver.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = MIDIDriver.h; sourceTree = "<group>"; };
+		8923F6540625CB34007C5516 /* MIDIDriver.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = MIDIDriver.m; sourceTree = "<group>"; };
+		8923F6590625CB55007C5516 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		8943B3420645489E005550BF /* oberheim2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oberheim2.jpg; sourceTree = "<group>"; };
+		894B459C13B628B200AFCC6B /* PatchNameFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchNameFormatter.h; sourceTree = "<group>"; };
+		894B459D13B628B300AFCC6B /* PatchNameFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchNameFormatter.m; sourceTree = "<group>"; };
+		8965BFC506249F7B0002EF30 /* M1000.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = M1000.nib; sourceTree = "<group>"; };
+		898F13B70644F67F000D00FE /* newicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = newicon.icns; sourceTree = "<group>"; };
+		89B151610705B9810084C6A4 /* StoreSheet.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = StoreSheet.nib; sourceTree = "<group>"; };
+		89BC1E1408B71FE50042F902 /* ParamCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ParamCheckbox.h; sourceTree = "<group>"; };
+		89BC1E1508B71FE50042F902 /* ParamCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ParamCheckbox.m; sourceTree = "<group>"; };
+		89BC1E1608B71FE50042F902 /* ParamPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ParamPopUpButton.h; sourceTree = "<group>"; };
+		89BC1E1708B71FE50042F902 /* ParamPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ParamPopUpButton.m; sourceTree = "<group>"; };
+		89BC1E1808B71FE50042F902 /* ParamSlider.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ParamSlider.h; sourceTree = "<group>"; };
+		89BC1E1908B71FE50042F902 /* ParamSlider.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ParamSlider.m; sourceTree = "<group>"; };
+		89BC1E1A08B71FE50042F902 /* ParamTextField.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ParamTextField.h; sourceTree = "<group>"; };
+		89BC1E1B08B71FE50042F902 /* ParamTextField.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ParamTextField.m; sourceTree = "<group>"; };
+		89BC1E3008B720390042F902 /* Description.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = Description.h; sourceTree = "<group>"; };
+		89BC1E3108B720390042F902 /* Description.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = Description.m; sourceTree = "<group>"; };
+		89BC1EC908B731540042F902 /* sounddesc.plist */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.plist.xml; path = sounddesc.plist; sourceTree = "<group>"; };
+		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* ObieEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObieEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				8923F65A0625CB55007C5516 /* CoreMIDI.framework in Frameworks */,
+				8917FB38063A5AEB00CBA672 /* PreferencePanes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* ObieEditor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* ObieEditor */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = ObieEditor;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				89BC1E3008B720390042F902 /* Description.h */,
+				89BC1E3108B720390042F902 /* Description.m */,
+				89BC1E1408B71FE50042F902 /* ParamCheckbox.h */,
+				89BC1E1508B71FE50042F902 /* ParamCheckbox.m */,
+				89BC1E1608B71FE50042F902 /* ParamPopUpButton.h */,
+				89BC1E1708B71FE50042F902 /* ParamPopUpButton.m */,
+				89BC1E1808B71FE50042F902 /* ParamSlider.h */,
+				89BC1E1908B71FE50042F902 /* ParamSlider.m */,
+				89BC1E1A08B71FE50042F902 /* ParamTextField.h */,
+				89BC1E1B08B71FE50042F902 /* ParamTextField.m */,
+				2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */,
+				2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */,
+				891E5C6F0623302B000F7105 /* Controller.h */,
+				891E5C700623302B000F7105 /* Controller.m */,
+				891E5C9906234CE0000F7105 /* MatrixPatchController.h */,
+				891E5C9A06234CE0000F7105 /* MatrixPatchController.m */,
+				8923F6530625CB34007C5516 /* MIDIDriver.h */,
+				8923F6540625CB34007C5516 /* MIDIDriver.m */,
+				8915C59A0636F2CA003AE2D1 /* GetPatchPanel.h */,
+				8915C59B0636F2CA003AE2D1 /* GetPatchPanel.m */,
+				8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */,
+				8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */,
+				8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */,
+				8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */,
+				8915689A12EB63C300F4847E /* Parameter.h */,
+				894B459C13B628B200AFCC6B /* PatchNameFormatter.h */,
+				894B459D13B628B300AFCC6B /* PatchNameFormatter.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF750370BD2300C91783 /* ObieEditor_Prefix.pch */,
+				2A37F4B0FDCFA73011CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				89BC1EC908B731540042F902 /* sounddesc.plist */,
+				8943B3420645489E005550BF /* oberheim2.jpg */,
+				898F13B70644F67F000D00FE /* newicon.icns */,
+				891806E8063C0CA100C8B324 /* help */,
+				8965BFC506249F7B0002EF30 /* M1000.nib */,
+				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
+				8D15AC360486D014006FF6A4 /* Info.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				8915C5860636EEBF003AE2D1 /* GetPatchPanel.nib */,
+				8917FB43063A5DC300CBA672 /* PrefPanel.nib */,
+				8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */,
+				89B151610705B9810084C6A4 /* StoreSheet.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8917FB37063A5AEB00CBA672 /* PreferencePanes.framework */,
+				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
+				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
+				8923F6590625CB55007C5516 /* CoreMIDI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		891806E8063C0CA100C8B324 /* help */ = {
+			isa = PBXGroup;
+			children = (
+				891806E6063C096600C8B324 /* help.html */,
+			);
+			name = help;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D15AC280486D014006FF6A4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC290486D014006FF6A4 /* ObieEditor_Prefix.pch in Headers */,
+				8D15AC2A0486D014006FF6A4 /* MyDocument.h in Headers */,
+				891E5C710623302B000F7105 /* Controller.h in Headers */,
+				891E5C9B06234CE0000F7105 /* MatrixPatchController.h in Headers */,
+				8923F6550625CB34007C5516 /* MIDIDriver.h in Headers */,
+				8915C59C0636F2CA003AE2D1 /* GetPatchPanel.h in Headers */,
+				8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */,
+				8917FB91063A7AAD00CBA672 /* StorePatchPanel.h in Headers */,
+				89BC1E1C08B71FE50042F902 /* ParamCheckbox.h in Headers */,
+				89BC1E1E08B71FE50042F902 /* ParamPopUpButton.h in Headers */,
+				89BC1E2008B71FE50042F902 /* ParamSlider.h in Headers */,
+				89BC1E2208B71FE50042F902 /* ParamTextField.h in Headers */,
+				89BC1E3208B720390042F902 /* Description.h in Headers */,
+				8915689B12EB63C300F4847E /* Parameter.h in Headers */,
+				894B459E13B628B300AFCC6B /* PatchNameFormatter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D15AC270486D014006FF6A4 /* ObieEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89D904D509801E110019CA15 /* Build configuration list for PBXNativeTarget "ObieEditor" */;
+			buildPhases = (
+				8D15AC280486D014006FF6A4 /* Headers */,
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObieEditor;
+			productInstallPath = "$(HOME)/Applications";
+			productName = ObieEditor;
+			productReference = 8D15AC370486D014006FF6A4 /* ObieEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 89D904D909801E110019CA15 /* Build configuration list for PBXProject "ObieEditor2" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* ObieEditor */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* ObieEditor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				8965BFC606249F7B0002EF30 /* M1000.nib in Resources */,
+				8915C5870636EEBF003AE2D1 /* GetPatchPanel.nib in Resources */,
+				8917FB45063A5DC300CBA672 /* PrefPanel.nib in Resources */,
+				8917FB8D063A788D00CBA672 /* StorePatchPanel.nib in Resources */,
+				891806E7063C096600C8B324 /* help.html in Resources */,
+				898F13B80644F67F000D00FE /* newicon.icns in Resources */,
+				8943B3430645489E005550BF /* oberheim2.jpg in Resources */,
+				89B151620705B9810084C6A4 /* StoreSheet.nib in Resources */,
+				89BC1ECA08B731540042F902 /* sounddesc.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */,
+				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				891E5C720623302B000F7105 /* Controller.m in Sources */,
+				891E5C9C06234CE0000F7105 /* MatrixPatchController.m in Sources */,
+				8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */,
+				8915C59D0636F2CA003AE2D1 /* GetPatchPanel.m in Sources */,
+				8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */,
+				8917FB90063A7AAD00CBA672 /* StorePatchPanel.m in Sources */,
+				89BC1E1D08B71FE50042F902 /* ParamCheckbox.m in Sources */,
+				89BC1E1F08B71FE50042F902 /* ParamPopUpButton.m in Sources */,
+				89BC1E2108B71FE50042F902 /* ParamSlider.m in Sources */,
+				89BC1E2308B71FE50042F902 /* ParamTextField.m in Sources */,
+				89BC1E3308B720390042F902 /* Description.m in Sources */,
+				894B459F13B628B300AFCC6B /* PatchNameFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4B7FDCFA73011CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4BAFDCFA73011CA2CEA /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		8917FB43063A5DC300CBA672 /* PrefPanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8917FB44063A5DC300CBA672 /* English */,
+			);
+			name = PrefPanel.nib;
+			sourceTree = "<group>";
+		};
+		8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8917FB8C063A788D00CBA672 /* English */,
+			);
+			name = StorePatchPanel.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89D904D609801E110019CA15 /* ObieEditor Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ObieEditor_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = ObieEditor;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = "ObieEditor Development";
+		};
+		89D904D709801E110019CA15 /* ObieEditor Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ObieEditor_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = ObieEditor;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = "ObieEditor Deployment";
+		};
+		89D904D809801E110019CA15 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ObieEditor_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = ObieEditor;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		89D904DA09801E110019CA15 /* ObieEditor Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = "ObieEditor Development";
+		};
+		89D904DB09801E110019CA15 /* ObieEditor Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					ppc,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = "ObieEditor Deployment";
+		};
+		89D904DC09801E110019CA15 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89D904D509801E110019CA15 /* Build configuration list for PBXNativeTarget "ObieEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D904D609801E110019CA15 /* ObieEditor Development */,
+				89D904D709801E110019CA15 /* ObieEditor Deployment */,
+				89D904D809801E110019CA15 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		89D904D909801E110019CA15 /* Build configuration list for PBXProject "ObieEditor2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D904DA09801E110019CA15 /* ObieEditor Development */,
+				89D904DB09801E110019CA15 /* ObieEditor Deployment */,
+				89D904DC09801E110019CA15 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}

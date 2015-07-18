@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+  <title>ObieEditor online help</title>
+  <meta name="AppleTitle" content="ObieEditor help">
+  <meta name="copyright" content="Copyright 2005 denis queffeulou.">
+</head>
+<body>
+<p>
+<img src="oberheim2.jpg"></p>
+<h1>Oberheim Matrix-1000 single patch editor</h1>
+<h2>Description</h2>
+<p>
+This software allows to open/edit/save single patches for Oberheim
+Matrix-1000 synthesizer. </p>
+<p>Since users generally own a MIDI sequencer, the editor don't have MIDI thru function.<br>
+</p>
+<h2>Requirements</h2>
+<p>MacOSX 10.4,10.3, should also work on 10.2.<br>
+A Oberheim Matrix-1000.<br>
+A MIDI interface.<br>
+A Mac PPC or Intel.
+</p>
+<h2>Operations</h2>
+<p>
+First you have to configure your Matrix MIDI input and output port in
+preferences panel. No channel number is necessary because the software
+don't have MIDI thru. </p>
+<p>If your Matrix is like mine (with bugs), you have to set Send patch for ENV1 SUSTAIN and Send Patch for ENV2 TO VCA2 because
+when I send the parameter using the same SYSEX as for the other parameters, ENV1 SUSTAIN doesn't work and ENV2 TO VCA2 crashes the Matrix.
+So when the checkboxes are on, I send the whole patch for these parameters.
+</p>
+<p>
+Then you can get a patch from the synth with Patch-&gt;Get menu or get
+the edit buffer. </p>
+<p>When you open a patch from disk, default is to not transmit it to the synth,
+you have to do it with Patch-&gt;Send. It allows to get the current
+edit buffer if something interesting have to be saved first. 
+You can change this behavior in the Preferences panel.
+</p>
+<p>
+Global parameters are not saved with the patch, perhaps I'll do it in
+the future. Since Matrix-1000 don't allow single global parameter edit,
+you have to get/send the whole
+parameters.<br>
+</p>
+<h2>Release notes</h2>
+<h3>1.3</h3>
+<p>
+<ul>
+<li>Fix the UI update after a File->Revert.</li>
+<li>Add some check for the patch name.</li>
+</ul>
+</p>
+<h3>1.2</h3>
+<p>
+<ul>
+<li>Set the range of the wave parameter to 63 instead of 31. This allows to obtain a sine wave.</li>
+<li>Add two preferences parameters to send the whole patch for ENV1 SUSTAIN and ENV2 TO VCA2 parameters.
+Default values are on.</li>
+</ul>
+</p>
+<h2>Legal</h2>
+<p>It is free software Copyright 2007 denis queffeulou. You can copy
+and distribute this application but you are not allowed to modify it
+and to get fee for it. Contact me if you want to get the source code.<br>
+</p>
+<p>
+<a href="http://dqueffeulou.free.fr/softs/m1000osx.php">http://dqueffeulou.free.fr/softs/m1000osx.php</a>
+</p>
+</body>
+</html>

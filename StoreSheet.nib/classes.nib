@@ -1,0 +1,28 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                getEditBuffer = id; 
+                getPatch = id; 
+                openPreferences = id; 
+                sendPatch = id; 
+                storeCancelAction = id; 
+                storeOKAction = id; 
+                storePatch = id; 
+            }; 
+            CLASS = Controller; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {bankNumber = id; infoPanel = id; mStoreSheet = id; patchNumber = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancelAction = id; okAction = id; }; 
+            CLASS = StorePatchPanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {bankNumber = id; patchNumber = NSTextField; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

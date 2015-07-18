@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {cancelAction = id; okAction = id; }; 
+            CLASS = GetPatchPanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {bankNumber = NSSlider; patchNumber = NSSlider; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

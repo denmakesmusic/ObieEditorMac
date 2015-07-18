@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>8</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Reassign</string>
+			<string>Rotate</string>
+			<string>Unison</string>
+			<string>Reassign w/ Rob</string>
+		</array>
+		<key>parameter</key>
+		<integer>48</integer>
+	</dict>
+	<key>9</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>0</integer>
+	</dict>
+	<key>10</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>5</integer>
+	</dict>
+	<key>11</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>3</integer>
+	</dict>
+	<key>30012</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>7</integer>
+	</dict>
+	<key>31012</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>7</integer>
+	</dict>
+	<key>30013</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>6</integer>
+	</dict>
+	<key>31013</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>6</integer>
+	</dict>
+	<key>14</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>10</integer>
+	</dict>
+	<key>15</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>15</integer>
+	</dict>
+	<key>16</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>13</integer>
+	</dict>
+	<key>30017</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>17</integer>
+	</dict>
+	<key>31017</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>17</integer>
+	</dict>
+	<key>30018</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>16</integer>
+	</dict>
+	<key>31018</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>16</integer>
+	</dict>
+	<key>32018</key>
+	<dict>
+		<key>mask</key>
+		<integer>4</integer>
+		<key>parameter</key>
+		<integer>16</integer>
+	</dict>
+	<key>19</key>
+	<dict>
+		<key>max</key>
+		<integer>62</integer>
+		<key>offset</key>
+		<integer>-31</integer>
+		<key>parameter</key>
+		<integer>12</integer>
+	</dict>
+	<key>20</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>20</integer>
+	</dict>
+	<key>21</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>8</integer>
+	</dict>
+	<key>22</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>9</integer>
+	</dict>
+	<key>30023</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>18</integer>
+	</dict>
+	<key>31023</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>18</integer>
+	</dict>
+	<key>24</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>19</integer>
+	</dict>
+	<key>25</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>No sync</string>
+			<string>Soft</string>
+			<string>Hard</string>
+			<string>Harder</string>
+		</array>
+		<key>parameter</key>
+		<integer>2</integer>
+	</dict>
+	<key>26</key>
+	<dict>
+		<key>parameter</key>
+		<integer>21</integer>
+	</dict>
+	<key>27</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>24</integer>
+	</dict>
+	<key>30028</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>25</integer>
+	</dict>
+	<key>31028</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>25</integer>
+	</dict>
+	<key>30029</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>26</integer>
+	</dict>
+	<key>31029</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>26</integer>
+	</dict>
+	<key>30</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>30</integer>
+	</dict>
+	<key>31</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>27</integer>
+	</dict>
+	<key>32</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>44</integer>
+	</dict>
+	<key>33</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Constant speed</string>
+			<string>Constant time</string>
+			<string>Exponential 1</string>
+			<string>Exponential 2</string>
+		</array>
+		<key>parameter</key>
+		<integer>46</integer>
+	</dict>
+	<key>34</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>47</integer>
+	</dict>
+	<key>35</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>80</integer>
+	</dict>
+	<key>36</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>No trigger</string>
+			<string>Single trigger</string>
+			<string>Multi trigger</string>
+			<string>External trigger</string>
+		</array>
+		<key>parameter</key>
+		<integer>86</integer>
+	</dict>
+	<key>37</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>87</integer>
+	</dict>
+	<key>38</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Triangle</string>
+			<string>Up sawtooth</string>
+			<string>Down sawtooth</string>
+			<string>Square</string>
+			<string>Random</string>
+			<string>Noise</string>
+			<string>Sampled modulation</string>
+			<string>Not used</string>
+		</array>
+		<key>parameter</key>
+		<integer>82</integer>
+	</dict>
+	<key>39</key>
+	<dict>
+		<key>max</key>
+		<integer>31</integer>
+		<key>parameter</key>
+		<integer>83</integer>
+	</dict>
+	<key>40</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+		<key>parameter</key>
+		<integer>88</integer>
+	</dict>
+	<key>41</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>84</integer>
+	</dict>
+	<key>42</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>90</integer>
+	</dict>
+	<key>43</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>No trigger</string>
+			<string>Single trigger</string>
+			<string>Multi trigger</string>
+			<string>External trigger</string>
+		</array>
+		<key>parameter</key>
+		<integer>96</integer>
+	</dict>
+	<key>44</key>
+	<dict>
+		<key>max</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>97</integer>
+	</dict>
+	<key>45</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Triangle</string>
+			<string>Up sawtooth</string>
+			<string>Down sawtooth</string>
+			<string>Square</string>
+			<string>Random</string>
+			<string>Noise</string>
+			<string>Sampled modulation</string>
+			<string>Not used</string>
+		</array>
+		<key>parameter</key>
+		<integer>92</integer>
+	</dict>
+	<key>46</key>
+	<dict>
+		<key>max</key>
+		<integer>31</integer>
+		<key>parameter</key>
+		<integer>93</integer>
+	</dict>
+	<key>47</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+		<key>parameter</key>
+		<integer>98</integer>
+	</dict>
+	<key>48</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>94</integer>
+	</dict>
+	<key>30049</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>57</integer>
+	</dict>
+	<key>31049</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>57</integer>
+	</dict>
+	<key>32049</key>
+	<dict>
+		<key>mask</key>
+		<integer>4</integer>
+		<key>parameter</key>
+		<integer>57</integer>
+	</dict>
+	<key>50</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>50</integer>
+	</dict>
+	<key>51</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>51</integer>
+	</dict>
+	<key>52</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>52</integer>
+	</dict>
+	<key>53</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>53</integer>
+	</dict>
+	<key>54</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>54</integer>
+	</dict>
+	<key>55</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>55</integer>
+	</dict>
+	<key>30056</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>59</integer>
+	</dict>
+	<key>31056</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>59</integer>
+	</dict>
+	<key>30057</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>58</integer>
+	</dict>
+	<key>31057</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>58</integer>
+	</dict>
+	<key>30058</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>67</integer>
+	</dict>
+	<key>31058</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>67</integer>
+	</dict>
+	<key>32058</key>
+	<dict>
+		<key>mask</key>
+		<integer>4</integer>
+		<key>parameter</key>
+		<integer>67</integer>
+	</dict>
+	<key>59</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>60</integer>
+	</dict>
+	<key>60</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>61</integer>
+	</dict>
+	<key>61</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>62</integer>
+	</dict>
+	<key>62</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>63</integer>
+	</dict>
+	<key>63</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>64</integer>
+	</dict>
+	<key>64</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>65</integer>
+	</dict>
+	<key>30065</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>69</integer>
+	</dict>
+	<key>31065</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>69</integer>
+	</dict>
+	<key>30066</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>68</integer>
+	</dict>
+	<key>31066</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>68</integer>
+	</dict>
+	<key>30067</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>77</integer>
+	</dict>
+	<key>31067</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>77</integer>
+	</dict>
+	<key>32067</key>
+	<dict>
+		<key>mask</key>
+		<integer>4</integer>
+		<key>parameter</key>
+		<integer>77</integer>
+	</dict>
+	<key>68</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>70</integer>
+	</dict>
+	<key>69</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>71</integer>
+	</dict>
+	<key>70</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>72</integer>
+	</dict>
+	<key>71</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>73</integer>
+	</dict>
+	<key>72</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>74</integer>
+	</dict>
+	<key>73</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>75</integer>
+	</dict>
+	<key>30074</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>79</integer>
+	</dict>
+	<key>31074</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>79</integer>
+	</dict>
+	<key>30075</key>
+	<dict>
+		<key>mask</key>
+		<integer>1</integer>
+		<key>parameter</key>
+		<integer>78</integer>
+	</dict>
+	<key>31075</key>
+	<dict>
+		<key>mask</key>
+		<integer>2</integer>
+		<key>parameter</key>
+		<integer>78</integer>
+	</dict>
+	<key>76</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+		<key>parameter</key>
+		<integer>33</integer>
+	</dict>
+	<key>77</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>34</integer>
+	</dict>
+	<key>78</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>35</integer>
+	</dict>
+	<key>79</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>36</integer>
+	</dict>
+	<key>80</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>37</integer>
+	</dict>
+	<key>81</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>38</integer>
+	</dict>
+	<key>82</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>40</integer>
+	</dict>
+	<key>83</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Single trigger</string>
+			<string>Multi trigger</string>
+			<string>External trigger</string>
+			<string>External gated</string>
+		</array>
+		<key>parameter</key>
+		<integer>41</integer>
+	</dict>
+	<key>84</key>
+	<dict>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>42</integer>
+	</dict>
+	<key>85</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Single trigger</string>
+			<string>Multi trigger</string>
+			<string>External trigger</string>
+			<string>External gated</string>
+		</array>
+		<key>parameter</key>
+		<integer>43</integer>
+	</dict>
+	<key>86</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>1</integer>
+	</dict>
+	<key>87</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>4</integer>
+	</dict>
+	<key>88</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>11</integer>
+	</dict>
+	<key>89</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>14</integer>
+	</dict>
+	<key>90</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>22</integer>
+	</dict>
+	<key>91</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>23</integer>
+	</dict>
+	<key>92</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>28</integer>
+	</dict>
+	<key>93</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>29</integer>
+	</dict>
+	<key>94</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>56</integer>
+	</dict>
+	<key>95</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>66</integer>
+	</dict>
+	<key>96</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>76</integer>
+	</dict>
+	<key>97</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>85</integer>
+	</dict>
+	<key>98</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>95</integer>
+	</dict>
+	<key>99</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>45</integer>
+	</dict>
+	<key>100</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>31</integer>
+	</dict>
+	<key>101</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>32</integer>
+	</dict>
+	<key>102</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>81</integer>
+	</dict>
+	<key>103</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+		<key>parameter</key>
+		<integer>91</integer>
+	</dict>
+	<key>104</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>105</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>106</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>107</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>108</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>109</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>110</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>111</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>112</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>113</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>114</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>115</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>116</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>117</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>118</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>119</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>120</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>121</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>122</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>123</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>124</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>125</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>126</key>
+	<dict>
+		<key>offset</key>
+		<integer>-64</integer>
+		<key>offsetFrom</key>
+		<integer>64</integer>
+	</dict>
+	<key>127</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>128</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>129</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>130</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>131</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>Envelope 1</string>
+			<string>Envelope 2</string>
+			<string>Envelope 3</string>
+			<string>LFO 1</string>
+			<string>LFO 2</string>
+			<string>Vibrato</string>
+			<string>Ramp 1</string>
+			<string>Ramp 2</string>
+			<string>Keyboard</string>
+			<string>Portamento</string>
+			<string>Tracking generator</string>
+			<string>Keyboard gate</string>
+			<string>Velocity</string>
+			<string>Release velocity</string>
+			<string>Pressure</string>
+			<string>Pedal 1</string>
+			<string>Pedal 2</string>
+			<string>Pitch Bend</string>
+			<string>Lever 2</string>
+			<string>Lever 3</string>
+		</array>
+	</dict>
+	<key>132</key>
+	<dict>
+		<key>min</key>
+		<integer>-63</integer>
+		<key>max</key>
+		<integer>63</integer>
+	</dict>
+	<key>133</key>
+	<dict>
+		<key>valueNames</key>
+		<array>
+			<string>Unused</string>
+			<string>DCO 1 frequency</string>
+			<string>DCO 1 pulsewidth</string>
+			<string>DCO 1 waveshape</string>
+			<string>DCO 2 frequency</string>
+			<string>DCO 2 pulsewidth</string>
+			<string>DCO 2 waveshape</string>
+			<string>Mix level</string>
+			<string>VCF FM amount</string>
+			<string>VCF frequency</string>
+			<string>VCF resonance</string>
+			<string>VCA 1 level</string>
+			<string>VCA 2 level</string>
+			<string>ENV 1 delay</string>
+			<string>ENV 1 attack</string>
+			<string>ENV 1 decay</string>
+			<string>ENV 1 release</string>
+			<string>ENV 1 amplitude</string>
+			<string>ENV 2 delay</string>
+			<string>ENV 2 attack</string>
+			<string>ENV 2 decay</string>
+			<string>ENV 2 release</string>
+			<string>ENV 2 amplitude</string>
+			<string>ENV 3 delay</string>
+			<string>ENV 3 attack</string>
+			<string>ENV 3 decay</string>
+			<string>ENV 3 release</string>
+			<string>ENV 3 amplitude</string>
+			<string>LFO 1 speed</string>
+			<string>LFO 1 amplitude</string>
+			<string>LFO 2 speed</string>
+			<string>LFO 2 amplitude</string>
+			<string>Portamento time</string>
+		</array>
+	</dict>
+	<key>210</key>
+	<dict/>
+	<key>211</key>
+	<dict/>
+	<key>212</key>
+	<dict/>
+	<key>213</key>
+	<dict/>
+</dict>
+</plist>
