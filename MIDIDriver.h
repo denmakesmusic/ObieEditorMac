@@ -17,7 +17,7 @@
 #define MASTER_DATA_SYSEX_SIZE (2*MASTER_DATA_SIZE+1+6)
 
 
-@interface MIDIDriver : NSObject 
+@interface MIDIDriver : NSObject
 {
 	MIDIClientRef mMIDIclient;
 	MIDIPortRef 	mInPort;
@@ -34,8 +34,8 @@
 - (void)setMIDIInput:(int)aInputPort Output:(int)aOutputPort;
 - (NSArray *)midiInputs;
 - (NSArray *)midiOutputs;
--(int)inputPortNumber;
--(int)outputPortNumber;
+- (int)inputPortNumber;
+- (int)outputPortNumber;
 
 
 // envoi d'un parameter seul
@@ -59,7 +59,7 @@
 // aType : 0x0D pour le buffer d'edition
 //         1 pour stocker le patch a l'emplacement designe par aNumber 
 //           dans la banque courante
--(void)sendPatch:(uint8_t*)aPatch Type:(int)aType Number:(int)aNumber;
+- (void)sendPatch:(uint8_t*)aPatch Type:(int)aType Number:(int)aNumber;
 
 // sauvegarde le patch en memoire interne (banque 0 et 1)
 - (void)storePatch:(uint8_t*)aPatch Bank:(int)aBankNumber Number:(int)aPatchNumber;
@@ -68,10 +68,14 @@
 - (void)setBank:(int)aBankNumber;
 
 // envoi des parametres globaux
--(void)sendMasterData:(uint8_t*)aData;
+- (void)sendMasterData:(uint8_t*)aData;
 
 //
 // recupere les donnees recues apres un appel a sendRequestDataType
 - (int)getReceivedBytes:(uint8_t *)aPatch maxSize:(int)aMaxSize;
+
+
+
+
 
 @end

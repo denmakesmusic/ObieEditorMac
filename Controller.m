@@ -14,6 +14,7 @@
 #define USERDEFAULT_KEY_SENDPATCHONOPEN @"sendPatchOnOpen"
 #define USERDEFAULT_KEY_SENDPATCHFORENV1SUSTAIN @"sendPatchForENV1SUSTAIN"
 #define USERDEFAULT_KEY_SENDPATCHFORENV2TOVCA2 @"sendPatchForENV2TOVCA2"
+#define USERDEFAULT_KEY_SENDPATCHFORLFOSAMPLESOURCE @"sendPatchForLFOSAMPLESOURCE"                  // added Sander.
 
 @implementation Controller
 
@@ -43,7 +44,12 @@
 			[mUserDefaults setBool:TRUE forKey:USERDEFAULT_KEY_SENDPATCHFORENV1SUSTAIN];
 		}
 		sendPatchForENV1SUSTAIN = [mUserDefaults boolForKey:USERDEFAULT_KEY_SENDPATCHFORENV1SUSTAIN];
-		
+        if ([mUserDefaults objectForKey:USERDEFAULT_KEY_SENDPATCHFORLFOSAMPLESOURCE] == nil)        // added Sander.
+        {
+            [mUserDefaults setBool:TRUE forKey:USERDEFAULT_KEY_SENDPATCHFORLFOSAMPLESOURCE];
+        }
+        sendPatchForLFOSAMPLESOURCE = [mUserDefaults boolForKey:USERDEFAULT_KEY_SENDPATCHFORLFOSAMPLESOURCE];
+        
 		mMIDIDriver = [MIDIDriver sharedInstance];
 		[mMIDIDriver setMIDIInput:oInport Output:oOutport];
 		
@@ -138,6 +144,7 @@
 		sendPatchOnOpen = [oPanel sendPatchOnOpen];
 		sendPatchForENV2TOVCA2 = [oPanel sendPatchForENV2TOVCA2];
 		sendPatchForENV1SUSTAIN = [oPanel sendPatchForENV1_SUSTAIN];
+        sendPatchForLFOSAMPLESOURCE = [oPanel sendPatchForLFOSAMPLESOURCE];
 		
 		[mMIDIDriver setMIDIInput:inp Output:outp];
 		[mUserDefaults setObject:[NSString stringWithFormat:@"%d",inp] forKey:USERDEFAULT_KEY_MIDIINPUT];
@@ -145,25 +152,32 @@
 		[mUserDefaults setBool:sendPatchOnOpen forKey:USERDEFAULT_KEY_SENDPATCHONOPEN];
 		[mUserDefaults setBool:sendPatchForENV2TOVCA2 forKey:USERDEFAULT_KEY_SENDPATCHFORENV2TOVCA2];
 		[mUserDefaults setBool:sendPatchForENV1SUSTAIN forKey:USERDEFAULT_KEY_SENDPATCHFORENV1SUSTAIN];
+        [mUserDefaults setBool:sendPatchForLFOSAMPLESOURCE forKey:USERDEFAULT_KEY_SENDPATCHFORLFOSAMPLESOURCE];
 		[mUserDefaults synchronize];
 	}
 	[oPanel release];
 }
 
--(bool)sendPatchOnOpen
+- (bool)sendPatchOnOpen
 {
 	return sendPatchOnOpen;
 }
 
--(bool)sendPatchForENV1SUSTAIN
+- (bool)sendPatchForENV1SUSTAIN
 {
 	return sendPatchForENV1SUSTAIN;
 }
 
--(bool)sendPatchForENV2TOVCA2
+- (bool)sendPatchForENV2TOVCA2
 {
 	return sendPatchForENV2TOVCA2;
 }
+
+- (bool)sendPatchForLFOSAMPLESOURCE                     // added Sander.
+{
+    return sendPatchForLFOSAMPLESOURCE;
+}
+
 
 // envoie le patch courant au synthe
 - (void)sendPatch:(id)sender
@@ -174,15 +188,15 @@
 	[self sendPatchFromDoc:oDoc];
 }
 
--(void)sendPatchFromDoc:(MyDocument *)aDoc
-{
-	[mMIDIDriver sendPatch:[aDoc patch]];
+- (void)sendPatchFromDoc:(MyDocument *)aDoc
+{	
+    [mMIDIDriver sendPatch:[aDoc patch]];
 }
 
 // appelee par le document lorsqu'il a initialisé ses donnees
--(void)notifyNewDocument:(MyDocument *)aDoc
+- (void)notifyNewDocument:(MyDocument *)aDoc
 {
-	if (sendPatchOnOpen)
+    if (sendPatchOnOpen)
 	{
 		[self sendPatchFromDoc:aDoc];
 	}
@@ -204,16 +218,18 @@
 		MPSemaphoreID delay;	
 		MPCreateSemaphore(1, 0, &delay); // a binary semaphore
 		int oReceiveCount = 0;
-		while(oReceiveCount == 0)
+		if (oReceiveCount == 0)
 		{
-			MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
+            MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
 			oReceiveCount = [mMIDIDriver getReceivedBytes:oBuffer maxSize:PATCH_TAB_SIZE];
 		}
 		if (oReceiveCount == PATCH_TAB_SIZE)
 		{
-			// on instancie un nouveau document avec le patch recu
+            // on instancie un nouveau document avec le patch recu
 			NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
-			MyDocument *oDoc = [docCont makeUntitledDocumentOfType:@"Matrix 1000 patch"];
+//			MyDocument *oDoc = [docCont makeUntitledDocumentOfType:@"Matrix 1000 patch"];       // deprecated.
+            NSError *makeUntitledDocumentOfTypeError;                                           // added Sander.
+            MyDocument *oDoc = [docCont makeUntitledDocumentOfType:@"Matrix 1000 patch" error:&makeUntitledDocumentOfTypeError];
 			[oDoc setParameters:oBuffer];
 			[docCont addDocument:oDoc];
 			[oDoc makeWindowControllers];
@@ -223,38 +239,52 @@
 			// envoyer le patch au synthe
 			[self sendPatchFromDoc:oDoc];
 		}
+        else
+        {
+            NSLog(@"getPatch: No response from M1000.");
+        }
 	}
 	[oPanel release];
 }
 
 // recupere le patch en cours d'edition
--(void)getEditBuffer:(id)sender
+- (void)getEditBuffer:(id)sender
 {
-	[mMIDIDriver sendRequestDataType:4 Number:0];
+//    NSLog(@"GetEditBuffer");
+
+    [mMIDIDriver sendRequestDataType:4 Number:0];
 	uint8_t oBuffer[PATCH_TAB_SIZE];
 	MPSemaphoreID delay;	
 	MPCreateSemaphore(1, 0, &delay); // a binary semaphore
-	int oReceiveCount = 0;
-	while(oReceiveCount == 0)
+    int oReceiveCount = 0;
+    if (oReceiveCount == 0)             // changed while into if state ment, if there is response, it will come within 500ms.
 	{
-		MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
+        MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
 		oReceiveCount = [mMIDIDriver getReceivedBytes:oBuffer maxSize:PATCH_TAB_SIZE];
 	}
 	if (oReceiveCount == PATCH_TAB_SIZE)
 	{
 		// on instancie un nouveau document avec le patch recu
-		NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
-		MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType]];
+        NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
+//        MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType]];  // deprecated.
+        NSError *makeUntitledDocumentOfTypeError;
+        MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType] error:&makeUntitledDocumentOfTypeError];
 		[oDoc setParameters:oBuffer];
 		[docCont addDocument:oDoc];
 		[oDoc makeWindowControllers];
 		NSWindowController *oWinCont = [[oDoc windowControllers] objectAtIndex:0];
 		[oWinCont window];
 		[oDoc showWindows];
+        
+        [oDoc getGlobalParameters:self];  //added Sander; after loading Patch data, the GlobalParameters are also loaded.
 	}
+    else
+    {
+        NSLog(@"getEditBuffer: No response from M1000.");
+    }
 }
 
--(void)storePatch:(id)sender
+- (void)storePatch:(id)sender
 {
 //	NSLog(@"storePatch");
 	NSDocumentController *docCont = [NSDocumentController sharedDocumentController];

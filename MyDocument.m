@@ -19,8 +19,7 @@
 
 enum
 {
-	TAB_WAVE, 
-	TAB_MOD,
+	TAB_PATCH,                                  // 2 tabs (sander)
 	TAB_GLOBAL
 };
 
@@ -44,20 +43,34 @@ const int mParameterNumbers[] = {
 
 enum 
 {
-	GLOBAL_TAG_VIB_SPEED = 200,
+	GLOBAL_TAG_VIB_SPEED = 201, // Sander was 200 > now Paramater+200
 	GLOBAL_TAG_VIB_MOD_SOURCE,
 	GLOBAL_TAG_VIB_MOD_AMOUNT,
 	GLOBAL_TAG_VIB_WAVE,
 	GLOBAL_TAG_VIB_AMP,
 	GLOBAL_TAG_VIB_AMP_MOD_SOURCE,
 	GLOBAL_TAG_VIB_AMP_MOD_AMOUNT,
-	GLOBAL_TAG_BEND_RANGE,
-	GLOBAL_TAG_BEND_RANGE_DISPLAY,
-	GLOBAL_TAG_LEVER_2 = 210,
+	GLOBAL_TAG_MASTER_TUNE, // =208 
+	GLOBAL_TAG_MIDI_CHANNEL = 211,
+	GLOBAL_TAG_MIDI_OMNI,
+    GLOBAL_TAG_MIDI_CONTROLLER_ENABLE,
+    GLOBAL_TAG_PATCH_CHANGE_ENABLE,
+    GLOBAL_TAG_LEVER_2 = 217,
 	GLOBAL_TAG_LEVER_3,
 	GLOBAL_TAG_PEDAL_1,
-	GLOBAL_TAG_PEDAL_2
+	GLOBAL_TAG_PEDAL_2,
+    GLOBAL_TAG_MIDI_ECHO_ENABLE = 232,  // Enabling midi thru. Better not use this, communication will be messed up!
+    GLOBAL_TAG_MASTER_TRANSPOSE = 234,
+    GLOBAL_TAG_MIDI_MONO_MODE_ENABLE = 235,
+    GLOBAL_TAG_BEND_RANGE = 364,
+    GLOBAL_TAG_BANK_LOCK_ENABLE,
+    GLOBAL_TAG_UNISON_ENABLE = 369,
+    GLOBAL_TAG_VOLUME_INVERT_ENABLE,
+    GLOBAL_TAG_MEMORY_PROTECT_ENABLE,
+    GLOBAL_TAG_BEND_RANGE_DISPLAY = 1364
 };
+
+
 
 @implementation MyDocument
 
@@ -79,6 +92,7 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
         // Add your subclass-specific initialization here.
         // If an error occurs here, send a [self release] message and return nil.
 		mValidGlobalParameters = FALSE;
+        
     }
     return self;
 }
@@ -126,7 +140,8 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
     // Insert code here to read your document from the given data.  You can also choose to override -loadFileWrapperRepresentation:ofType: or -readFromFile:ofType: instead.
     NSAssert([aType isEqualToString:MyDocumentType], @"Unknown type");
 	
-	NSRange oRange2 = {0, FILE_PATCH_SIZE-1};
+	NSRange oRange2 = {0, FILE_PATCH_SIZE};
+//    NSLog(@"LoadDataRepresentation.");
 	[data getBytes:mParameters range:oRange2];
 
 	// prevenir le controller
@@ -154,20 +169,28 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 
 // accesseur pour les donnees, appeles par NSWindowController
 
-- (void)setPatchName:(NSString *)aName
+- (void)setPatchName:(NSString *)aName                  // Sander: Puts PatchName in mParameters
 {
-	[aName getCString:(char*)mParameters maxLength:8 encoding:NSASCIIStringEncoding];
+    uint8_t aTempName[9];
+//    NSLog(@"setPatchName:>%@<",aName);
+    [aName getCString:(char*)aTempName maxLength:9 encoding:NSASCIIStringEncoding];
+    int i = 0;                          // Sander: GetCString adds char at the end. For 8 chars you need 9. This overwrites param. 8. The for loop only copy's char(0-7)
+    for (i = 0; i <=7; i++) {
+        mParameters[i] = aTempName[i];
+    }
+    
+//    NSLog(@"setPatchName oTempName: >%s<", aTempName);
 	[self updateChangeCount:NSChangeDone];
 }
 
 - (NSString *)patchName
 {
-	return [[NSString alloc] initWithBytes:mParameters length:8 encoding:NSASCIIStringEncoding];
+    return [[NSString alloc] initWithBytes:mParameters length:8 encoding:NSASCIIStringEncoding];
 }
 
-- (uint8_t*)patch
+- (uint8_t*)patch                                       //used with sendPatch
 {
-	return mParameters;
+    return mParameters;
 }
 
 
@@ -185,25 +208,13 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	// TODO verifier la valeur avant de l'envoyer au synthe
 	// changer le parametre sur le synthe
 	int oValue = aValue;
-	// cas particulier du detune (on recoit 0..62)
-	if (aIndex == MATRIX_INDEX_DCO2_DETUNE)
-	{
-		// 0..62
-		if (oValue < 31)
-		{
-			oValue += 97; // 97..127 (bon je ne comprend pas tout mais ca marche...)
-			// mettre a jour le modele
-			// en fait j'ai constate que si je met dans le modele la meme valeur que 
-			// j'envoie, ca ne marche pas, il faut mettre dans le modele (et lorsqu'on
-			// envoie le patch complet) le bit de poids fort a 1 pour les negatifs
-			mParameters[aIndex] = oValue | 0x80;
-		}
-		else
-		{
-			oValue -= 31;
-			mParameters[aIndex] = oValue;
-		}
-	}
+	// cas particulier du detune (on recoit 0..62) Sander changed that in sounddesc.plist now revieving -31 ..31 which made things simpler.
+    if (aIndex == MATRIX_INDEX_DCO2_DETUNE)  // The value ranges from -31 to +31 and has to be written in 6bit signed format. (Sander)
+    {
+//        NSLog(@"SetP inValue = %i", oValue);
+        mParameters[aIndex] = oValue;
+    }
+
 	else
 	{   // cas standard
 		if (oValue < 0)
@@ -227,7 +238,8 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	// l'envoi du sustain ne fonctionne pas
 	// ni le env2->vca
 	if ((aIndex == MATRIX_INDEX_ENV1_SUSTAIN && [cont sendPatchForENV1SUSTAIN])
-	 || (aIndex == MATRIX_INDEX_ENV2_TO_VCA2 && [cont sendPatchForENV2TOVCA2]))
+        || (aIndex == MATRIX_INDEX_ENV2_TO_VCA2 && [cont sendPatchForENV2TOVCA2])
+        || ((aIndex == MATRIX_INDEX_LFO1_SAMPLED_SOURCE  || aIndex == MATRIX_INDEX_LFO2_SAMPLED_SOURCE ) && [cont sendPatchForLFOSAMPLESOURCE]))
 	{
 		// donc on envoie tout le patch
 		[[MIDIDriver sharedInstance] sendPatch:[self patch]];
@@ -260,27 +272,30 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	memcpy(mParameters, aPatch, PATCH_TAB_SIZE);
 	NSString *oPatchName = [[NSString alloc] initWithBytes:aPatch length:8 encoding:NSASCIIStringEncoding];
 	[mPatchName setStringValue:oPatchName];
+//    NSLog(@"setParameters PatchName:%@", oPatchName);
 }
 
-
-- (int)getParameter:(int)aIndex;
+- (int)getParameter:(int)aIndex // Reading parameters from SYNTH, with exceptions for DCO2_DETUNE and VCF_FREQ (Sander Version) ----------------<<<<
 {
-	int oValue =  mParameters[aIndex];
-	// cas particulier du detune doit retourner 0..62
-	if (aIndex == MATRIX_INDEX_DCO2_DETUNE)
-	{   
-		oValue = mParameters[aIndex] & 0x7F; // 97..127  0..31
-		if (oValue >= 97)
-		{
-			oValue -= 97;
-		}
-	}
-	else
-	if (aIndex != MATRIX_INDEX_FILTER_FREQ && oValue > 63)
-	{
-		oValue -= 128;
-	}
-	return oValue;
+    int oValue = mParameters[aIndex];
+//    NSLog(@"GetParameter %i inValue  %i", aIndex, oValue);
+    if (aIndex == MATRIX_INDEX_DCO2_DETUNE) // DETUNE_DCO1 is 6bitsigned. InputValue 97..127 = (-31..-1) 0..31 (0..31) (sander) (old method gave -31 for detune=0)
+    {
+        if (oValue >= 225)
+        //if (oValue >= 97)
+        {
+            oValue -= 256;
+           // oValue -= 128;
+        }
+    }
+    else
+        if (aIndex != MATRIX_INDEX_FILTER_FREQ && oValue > 63)
+        {
+          //  oValue -= 128;
+            oValue -= 256;
+        }
+//    NSLog(@"GetParameeter_outValue  %i", oValue);
+    return oValue;
 }
 
 // positionne les parametres globaux
@@ -319,14 +334,14 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 {
 //	NSLog(@"windowDidLoad %@ %d\n", keyMode, [self isWindowLoaded]);
     [super windowControllerDidLoadNib:aController];
-
-	NSWindow *oWin = [aController window];
+    
+    NSWindow *oWin = [aController window];
 	NSView *oView = [oWin contentView];
-	//NSLog(@"view = %@", oView);
+//    NSLog(@"view = %@", oView);
 	NSArray *subviews = [oView subviews];
-	//NSLog(@"subviews = %@", subviews);
-	
-	int oTag = 8;
+//	NSLog(@"subviews = %@", subviews);
+    
+    int oTag = 8;
 	NSTabView *oTabView = [subviews objectAtIndex:0];
 	NSArray *oTabs = [oTabView tabViewItems];
 		
@@ -372,22 +387,29 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
 		
 	// le nom du patch
-	[mPatchName setStringValue:[self patchName]];
-	[mPatchName setDelegate:self];
+	[mPatchName setStringValue:[self patchName]];                                   // Display PatchName.
+//    [mPatchName setDelegate:self];                                                  // Removed Sander. Don't know what it's supposed to do, but it doesn't work.
+//    NSLog(@"WindowDidLoad_mPatchname: >%@<", [self patchName]);
+
+     
+    
 	
 	// global parameters
 	NSView *oTabGlobal = [[oTabs objectAtIndex:TAB_GLOBAL] view];
-	NSArray *gSou = [NSArray arrayWithObjects:@"Off", @"Lever2", @"Pedal1", nil];
+	
 	NSPopUpButton *globalVibratoSpeedModSource = [oTabGlobal viewWithTag:GLOBAL_TAG_VIB_MOD_SOURCE];
 	[globalVibratoSpeedModSource removeAllItems];
+    NSArray *gSou = [NSArray arrayWithObjects:@"OFF", @"LEVER-2", @"PEDAL-1", nil];
 	[globalVibratoSpeedModSource addItemsWithTitles:gSou];
-	NSPopUpButton *globalVibratoWaveform = [oTabGlobal viewWithTag:GLOBAL_TAG_VIB_WAVE];
+	
+    NSPopUpButton *globalVibratoWaveform = [oTabGlobal viewWithTag:GLOBAL_TAG_VIB_WAVE];
 	[globalVibratoWaveform removeAllItems];
-	NSArray *vibratoWaves = [NSArray arrayWithObjects:@"Triangle", @"Up sawtooth", @"Down sawtooth", @"Square", @"Random", @"Noise", nil];
+	NSArray *vibratoWaves = [NSArray arrayWithObjects:@"TRIANGLE", @"SAW UP", @"SAW DWN", @"SQUARE", @"RANDOM", @"NOISE", nil];
 	[globalVibratoWaveform addItemsWithTitles:vibratoWaves];
-	NSPopUpButton *globalVibratoAmpModSource = [oTabGlobal viewWithTag:GLOBAL_TAG_VIB_AMP_MOD_SOURCE];
+	
+    NSPopUpButton *globalVibratoAmpModSource = [oTabGlobal viewWithTag:GLOBAL_TAG_VIB_AMP_MOD_SOURCE];
 	[globalVibratoAmpModSource removeAllItems];
-	[globalVibratoAmpModSource addItemsWithTitles:gSou];
+    [globalVibratoAmpModSource addItemsWithTitles:gSou];
 
 	ParamTextField *globalLever2 = [oTabGlobal viewWithTag:GLOBAL_TAG_LEVER_2];
 	id oObject = [[Description soundInstance] getObject:GLOBAL_TAG_LEVER_2];
@@ -404,50 +426,114 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	ParamTextField *globalPedal2 = [oTabGlobal viewWithTag:GLOBAL_TAG_PEDAL_2];
 	oObject = [[Description soundInstance] getObject:GLOBAL_TAG_PEDAL_2];
 	[self setObjectUI:globalPedal2 dico:oObject tag:GLOBAL_TAG_PEDAL_2];
-	
-	[self updateGlobalParameters];
+    
+    ParamTextField *globalMidiChannel = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CHANNEL];                   // added Sander: (11) MIDI CHANNEL
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MIDI_CHANNEL];
+    [self setObjectUI:globalMidiChannel dico:oObject tag:GLOBAL_TAG_MIDI_CHANNEL];
+    
+    ParamCheckbox *globalMidiOmniEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_OMNI];                    // added Sander: (12) MIDI Omni Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MIDI_OMNI];
+    [self setObjectUI:globalMidiOmniEnable dico:oObject tag:GLOBAL_TAG_MIDI_OMNI];
+    
+    ParamCheckbox *globalMidiControllersEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CONTROLLER_ENABLE];// added Sander: (13) MIDI Controllers Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MIDI_CONTROLLER_ENABLE];
+    [self setObjectUI:globalMidiControllersEnable dico:oObject tag:GLOBAL_TAG_MIDI_CONTROLLER_ENABLE];
+    
+    ParamCheckbox *globalPatchChangeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_PATCH_CHANGE_ENABLE];       // added Sander: (14) MIDI Patch Change Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_PATCH_CHANGE_ENABLE];
+    [self setObjectUI:globalPatchChangeEnable dico:oObject tag:GLOBAL_TAG_PATCH_CHANGE_ENABLE];
+
+/*  Enabling MIDI thru disables MIDI out, so no sysex from M1000. Better not use it.
+    ParamCheckbox *globalMidiEchoEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_ECHO_ENABLE];             // added Sander: (32) MIDI THRU Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MIDI_ECHO_ENABLE];
+    [self setObjectUI:globalMidiEchoEnable dico:oObject tag:GLOBAL_TAG_MIDI_ECHO_ENABLE];
+*/
+    ParamTextField *globalMasterTranspose = [oTabGlobal viewWithTag:GLOBAL_TAG_MASTER_TRANSPOSE];           // added Sander: (34) TRANSPOSE
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MASTER_TRANSPOSE];
+    [self setObjectUI:globalMasterTranspose dico:oObject tag:GLOBAL_TAG_MASTER_TRANSPOSE];
+    
+    ParamCheckbox *globalMidiMonoModeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_MONO_MODE_ENABLE];    // added Sander: (35) MIDI MONO Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MIDI_MONO_MODE_ENABLE];
+    [self setObjectUI:globalMidiMonoModeEnable dico:oObject tag:GLOBAL_TAG_MIDI_MONO_MODE_ENABLE];
+
+    ParamCheckbox *globalBankLockEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_BANK_LOCK_ENABLE];             // added Sander: (165) Bank Lock Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_BANK_LOCK_ENABLE];
+    [self setObjectUI:globalBankLockEnable dico:oObject tag:GLOBAL_TAG_BANK_LOCK_ENABLE];
+    
+    ParamCheckbox *globalUnisonEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_UNISON_ENABLE];                  // added Sander: (169) UNISON Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_UNISON_ENABLE];
+    [self setObjectUI:globalUnisonEnable dico:oObject tag:GLOBAL_TAG_UNISON_ENABLE];
+
+    ParamCheckbox *globalVolumeInvertEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_VOLUME_INVERT_ENABLE];     // added Sander: (170) Volume Invert Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_VOLUME_INVERT_ENABLE];
+    [self setObjectUI:globalVolumeInvertEnable dico:oObject tag:GLOBAL_TAG_VOLUME_INVERT_ENABLE];
+    
+    ParamCheckbox *globalMemoryProtectEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MEMORY_PROTECT_ENABLE];     // added Sander: (171) Memory Protect Enable
+    oObject = [[Description soundInstance] getObject:GLOBAL_TAG_MEMORY_PROTECT_ENABLE];
+    [self setObjectUI:globalMemoryProtectEnable dico:oObject tag:GLOBAL_TAG_MEMORY_PROTECT_ENABLE];
+    
+    [self updateGlobalParameters];
 
 	// premier tab
 	[oTabView selectFirstTabViewItem:self];
-
 }
+
+
 
 - (void)setObjectUI:(NSView*)aView dico:(id)aDico tag:(int)aTag
 {
 	MyDocument *doc = self;
-	//NSLog(@"tag = %d value = %d", oTag, [doc getParameter:oTag]);
-	if ([aView conformsToProtocol:@protocol(Parameter)])
+//    NSLog(@"tag = %d value = %d", aTag, [doc getParameter:aTag]);
+    if ([aView conformsToProtocol:@protocol(Parameter)])
 	{
 		[(id<Parameter>)aView setUI:aDico description:[Description soundInstance]];
 		[(id<Parameter>)aView setIntValueFromDoc:[doc getParameter:aTag]];
 	}
 }
 
-// Global parameters
 
+
+// Get Global parameters from Matrix1000.
 - (IBAction)getGlobalParameters:(id)sender
 {
-	[[MIDIDriver sharedInstance] sendRequestDataType:3 Number:0];
+    
+//	NSLog(@"getGlobalParameters");
+    [[MIDIDriver sharedInstance] sendRequestDataType:3 Number:0];
 	uint8_t oBuffer[MASTER_DATA_SIZE];
 	MPSemaphoreID delay;	
 	MPCreateSemaphore(1, 0, &delay); // a binary semaphore
 	int oReceiveCount = 0;
-	while(oReceiveCount == 0)
+	if (oReceiveCount == 0)  // No response generates Error message, if there is a m1000 and it is responding, it will respond within 500ms.
 	{
-		MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
+//        NSLog(@"getReceiveCount while == 0");
+        MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
 		oReceiveCount = [[MIDIDriver sharedInstance] getReceivedBytes:oBuffer maxSize:MASTER_DATA_SIZE];
 	}
-	if (oReceiveCount == MASTER_DATA_SIZE)
+    if (oReceiveCount == MASTER_DATA_SIZE)
 	{
 		[self setGlobalParameters:oBuffer];
 		[self updateGlobalParameters];
 	}
+    else
+    {
+        NSLog(@"getGlobalParameters: No response from M1000.");
+        
+        NSWindow *oWin = [[[self windowControllers] objectAtIndex:0] window];// added Sander: for error message, if no response from m1000.
+        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"An error occurred: M-1000 did not respond.\n\nParameter values could not be loaded."];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert beginSheetModalForWindow:oWin modalDelegate:self didEndSelector:NULL contextInfo:nil];
+    }
 }
 
+
+
 // update global parameter display with document values
--(void)updateGlobalParameters
+- (void)updateGlobalParameters
 {
-	MyDocument *oDoc = self;
+    int tempValue;
+    MyDocument *oDoc = self;
 	NSWindow *oWin = [[[self windowControllers] objectAtIndex:0] window];
 	NSView *oView = [oWin contentView];
 	NSArray *subviews = [oView subviews];	
@@ -468,7 +554,21 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	NSTextField *globalPedal2 = [oTabGlobal viewWithTag:GLOBAL_TAG_PEDAL_2];
 	NSSlider *globalBendRange = [oTabGlobal viewWithTag:GLOBAL_TAG_BEND_RANGE];
 	NSTextField *globalBendRangeDisplay = [oTabGlobal viewWithTag:GLOBAL_TAG_BEND_RANGE_DISPLAY];
+    // added sander
+    NSSlider *globalMasterTune = [oTabGlobal viewWithTag:GLOBAL_TAG_MASTER_TUNE];                       // added Sander: (8) Master Tune
+    NSTextField *globalMidiChannel = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CHANNEL];                  // added Sander: (11) MIDI CHANNEL
+    NSButton *globalMidiOmniEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_OMNI];                     // added Sander: (12) MIDI Omni Enable
+    NSButton *globalMidiControllerEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CONTROLLER_ENABLE];  // added Sander: (13) MIDI Controller Enable
+    NSButton *globalMidiPatchChangeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_PATCH_CHANGE_ENABLE];    // added Sander: (14) MIDI Patch Change Enable
+//    NSButton *globalMidiEchoEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_ECHO_ENABLE];            // added Sander: (32) MIDI THRU Enable
+    NSTextField *globalMasterTranspose = [oTabGlobal viewWithTag:GLOBAL_TAG_MASTER_TRANSPOSE];          // added Sander: (34) TRANSPOSE
+    NSButton *globalMidiMonoModeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_MONO_MODE_ENABLE];     // added Sander: (35) MIDI MONO Enable
+    NSButton *globalBankLockEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_BANK_LOCK_ENABLE];              // added Sander: (165) Bank Lock Enable
+    NSButton *globalUnisonEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_UNISON_ENABLE];                   // added Sander: (169) UNISON Enable
+    NSButton *globalVolumeInvertEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_VOLUME_INVERT_ENABLE];      // added Sander: (170) Volume Invert Enable
+    NSButton *globalMemoryProtectEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MEMORY_PROTECT_ENABLE];    // added Sander: (171) Memory Protect Enable
 
+    
 	[globalVibratoSpeed setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_VIB_SPEED]];	
 	[globalVibratoSpeedModSource selectItemAtIndex:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_VIB_SPEED_MOD_SOURCE]];
 	[globalVibratoSpeedModAmount setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_VIB_SPEED_MOD_AMOUNT]];
@@ -482,12 +582,36 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	[globalPedal2 setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_PEDAL_2]];
 	[globalBendRange setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_BEND_RANGE]];
 	[globalBendRangeDisplay setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_BEND_RANGE]];
+    tempValue = [oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MASTER_TUNE];                                              // added Sander: (8) Master Tune | 6 bit signed conversion.
+    if (tempValue >= 225) {
+        tempValue -= 256;
+    }
+    [globalMasterTune setIntValue:tempValue];
+    // ---------
+    [globalMidiChannel setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_CHANNEL]];                         // added Sander: (11) MIDI CHANNEL
+    [globalMidiOmniEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_OMNI]];                         // added Sander: (12) MIDI Omni Enable
+    [globalMidiControllerEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_CONTROLLER_ENABLE]];      // added Sander: (13) MIDI Controller Enable
+    [globalMidiPatchChangeEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_PATCH_CHANGE_ENABLE]];   // added Sander: (14) MIDI Patch Change Enable
+//    [globalMidiEchoEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_ECHO_ENABLE]]; don't use!     // added Sander: (32) MIDI THRU Enable
+    tempValue = [oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MASTER_TRANSPOSE];                                         // added Sander: (34) TRANSPOSE | 6 bit signed conversion.
+    if (tempValue >= 225) {
+        tempValue -= 256;
+    }
+    [globalMasterTranspose setIntValue:tempValue];
+    [globalMidiMonoModeEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MIDI_MONO_MODE_ENABLE]];         // added Sander: (35) MIDI MONO Enable
+    [globalBankLockEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_BANK_LOCK_ENABLE]];                  // added Sander: (165) Bank Lock Enable
+    [globalUnisonEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_UNISON_ENABLE]];                       // added Sander: (169) UNISON Enable
+    [globalVolumeInvertEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_VOLUME_INVERT_ENABLE]];          // added Sander: (170) Volume Invert Enable
+    [globalMemoryProtectEnable setIntValue:[oDoc getGlobalParameter:MATRIX_INDEX_GLOBAL_MEMORY_PROTECT_ENABLE]];        // added Sander: (171) Memory Protect Enable
 }
+
+
 
 // met a jour le document et envoie les parametres au synthe
 - (IBAction)sendGlobalParameters:(id)sender
 {
-	MyDocument *oDoc = self;
+    int tempValue;
+    MyDocument *oDoc = self;
 	NSWindow *oWin = [[[self windowControllers] objectAtIndex:0] window];
 	if ([oDoc validGlobalparameters])
 	{
@@ -509,8 +633,22 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 		NSTextField *globalPedal1 = [oTabGlobal viewWithTag:GLOBAL_TAG_PEDAL_1];
 		NSTextField *globalPedal2 = [oTabGlobal viewWithTag:GLOBAL_TAG_PEDAL_2];
 		NSSlider *globalBendRange = [oTabGlobal viewWithTag:GLOBAL_TAG_BEND_RANGE];
-
-		[oDoc setGlobalParameter:[globalVibratoSpeed intValue] At:MATRIX_INDEX_GLOBAL_VIB_SPEED];
+        // added sander
+        NSSlider *globalMasterTune = [oTabGlobal viewWithTag:GLOBAL_TAG_MASTER_TUNE];                                   // added Sander: (8) Master Tune
+        NSTextField *globalMidiChannel = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CHANNEL];                              // added Sander: (11) MIDI CHANNEL
+        NSButton *globalMidiOmniEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_OMNI];                                 // added Sander: (12) MIDI Omni Enable
+        NSButton *globalMidiControllerEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_CONTROLLER_ENABLE];              // added Sander: (13) MIDI Controller Enable
+        NSButton *globalMidiPatchChangeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_PATCH_CHANGE_ENABLE];                // added Sander: (14) MIDI Patch Change Enable
+//       NSButton *globalMidiEchoEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_ECHO_ENABLE];                         // added Sander: (32) MIDI THRU Enable
+        NSTextField *globalMasterTranspose = [oTabGlobal viewWithTag:GLOBAL_TAG_MASTER_TRANSPOSE];                      // added Sander: (34) TRANSPOSE
+        NSButton *globalMidiMonoModeEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MIDI_MONO_MODE_ENABLE];                 // added Sander: (35) MIDI MONO Enable
+        NSButton *globalBankLockEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_BANK_LOCK_ENABLE];                          // added Sander: (165) Bank Lock Enable
+        NSButton *globalUnisonEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_UNISON_ENABLE];                               // added Sander: (169) UNISON Enable
+        NSButton *globalVolumeInvertEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_VOLUME_INVERT_ENABLE];                  // added Sander: (170) Volume Invert Enable
+        NSButton *globalMemoryProtectEnable = [oTabGlobal viewWithTag:GLOBAL_TAG_MEMORY_PROTECT_ENABLE];                // added Sander: (171) Memory Protect Enable
+        
+        
+        [oDoc setGlobalParameter:[globalVibratoSpeed intValue] At:MATRIX_INDEX_GLOBAL_VIB_SPEED];
 		[oDoc setGlobalParameter:[globalVibratoSpeedModSource indexOfSelectedItem] At:MATRIX_INDEX_GLOBAL_VIB_SPEED_MOD_SOURCE];
 		[oDoc setGlobalParameter:[globalVibratoSpeedModAmount intValue] At:MATRIX_INDEX_GLOBAL_VIB_SPEED_MOD_AMOUNT];
 		[oDoc setGlobalParameter:[globalVibratoAmplitude intValue] At:MATRIX_INDEX_GLOBAL_VIB_AMP];
@@ -522,12 +660,27 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 		[oDoc setGlobalParameter:[globalPedal1 intValue] At:MATRIX_INDEX_GLOBAL_MIDI_PEDAL_1];
 		[oDoc setGlobalParameter:[globalPedal2 intValue] At:MATRIX_INDEX_GLOBAL_MIDI_PEDAL_2];
 		[oDoc setGlobalParameter:[globalBendRange intValue] At:MATRIX_INDEX_GLOBAL_BEND_RANGE];
-		
-		[[MIDIDriver sharedInstance] sendMasterData:[oDoc globalParameters]];	
+        // added sander
+        [oDoc setGlobalParameter:[globalMasterTune intValue] At:MATRIX_INDEX_GLOBAL_MASTER_TUNE];                           // added Sander: (8) Master Tune
+        [oDoc setGlobalParameter:[globalMidiChannel intValue] At:MATRIX_INDEX_GLOBAL_MIDI_CHANNEL];                         // added Sander: (11) MIDI CHANNEL
+        [oDoc setGlobalParameter:[globalMidiOmniEnable intValue] At:MATRIX_INDEX_GLOBAL_MIDI_OMNI];                         // added Sander: (12) MIDI Omni Enable
+        [oDoc setGlobalParameter:[globalMidiControllerEnable intValue] At:MATRIX_INDEX_GLOBAL_MIDI_CONTROLLER_ENABLE];      // added Sander: (13) MIDI Controller Enable
+        [oDoc setGlobalParameter:[globalMidiPatchChangeEnable intValue] At:MATRIX_INDEX_GLOBAL_MIDI_PATCH_CHANGE_ENABLE];   // added Sander: (14) MIDI Patch Change Enable
+//        [oDoc setGlobalParameter:[globalMidiEchoEnable intValue] At:MATRIX_INDEX_GLOBAL_MIDI_ECHO_ENABLE];                // added Sander: (32) MIDI THRU Enable
+        [oDoc setGlobalParameter:[globalMasterTranspose intValue] At:MATRIX_INDEX_GLOBAL_MASTER_TRANSPOSE];                 // added Sander: (34) TRANSPOSE
+        [oDoc setGlobalParameter:[globalMidiMonoModeEnable intValue] At:MATRIX_INDEX_GLOBAL_MIDI_MONO_MODE_ENABLE];         // added Sander: (35) MIDI MONO Enable
+        tempValue = [globalBankLockEnable intValue] << 7;                                                                   // added Sander: (165) Bank Lock Enable
+  //      NSLog(@"globalBankLockEnable= %d", tempValue);
+        [oDoc setGlobalParameter:tempValue At:MATRIX_INDEX_GLOBAL_BANK_LOCK_ENABLE];
+        [oDoc setGlobalParameter:[globalUnisonEnable intValue] At:MATRIX_INDEX_GLOBAL_UNISON_ENABLE];                       // added Sander: (169) UNISON Enable
+        [oDoc setGlobalParameter:[globalVolumeInvertEnable intValue] At:MATRIX_INDEX_GLOBAL_VOLUME_INVERT_ENABLE];          // added Sander: (170) Volume Invert Enable
+        [oDoc setGlobalParameter:[globalMemoryProtectEnable intValue] At:MATRIX_INDEX_GLOBAL_MEMORY_PROTECT_ENABLE];        // added Sander: (171) Memory Protect Enable
+        
+		[[MIDIDriver sharedInstance] sendMasterData:[oDoc globalParameters]];
 	}
 	else
 	{
-		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		[alert addButtonWithTitle:@"OK"];
 		[alert setMessageText:@"Global parameters not initialized, do a GET first."];
 		[alert setAlertStyle:NSWarningAlertStyle];
@@ -535,14 +688,16 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
 }
 
-- (IBAction)patchNameAction:(id)sender
+
+- (IBAction)patchNameAction:(id)sender                                  // Sander: Index 8 out of bounds when typed patchname is less than 8 charachters.
 {
 	// pas de parametre pour le nom
-	NSString *str = [[mPatchName stringValue] substringToIndex:8];
+    NSString *str = [[mPatchName stringValue] stringByPaddingToLength:8 withString:@" " startingAtIndex:0]; // Added Sander. For patchnames shorter then 8 characters fill with " ".
 	[self setPatchName:str];
-	[mPatchName setStringValue:str]; 
+//    NSLog(@"patchNameAction | str = >%@<", str);
+	[mPatchName setStringValue:str];        // So, very nice that this routine works, but the M1000 doesn't store patchnames anyway ;). Patchnames are "BNKx: xx" with banknr.&Patchnr.
+                                            // The Patchname does get stored in the file.
 }
-
 
 
 @end

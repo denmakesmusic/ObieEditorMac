@@ -12,7 +12,7 @@
 				<string>m1000p</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>newicon</string>
+			<string>OberheimLogo640</string>
 			<key>CFBundleTypeName</key>
 			<string>Matrix 1000 patch</string>
 			<key>CFBundleTypeOSTypes</key>
@@ -28,9 +28,9 @@
 	<key>CFBundleExecutable</key>
 	<string>ObieEditor</string>
 	<key>CFBundleIconFile</key>
-	<string>newicon</string>
+	<string>OberheimLogo640</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.dqueffeulou.ObieEditor</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -38,7 +38,9 @@
 	<key>CFBundleSignature</key>
 	<string>obie</string>
 	<key>CFBundleVersion</key>
-	<string>1.3</string>
+	<string>1.4</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.music</string>
 	<key>NSHelpFile</key>
 	<string>help.html</string>
 	<key>NSMainNibFile</key>

@@ -8,6 +8,7 @@
 @interface ParamSlider : NSSlider <Parameter>
 {
 	int offset;	// offset pour les valeurs du GUI
+    int AddValueDisplay; // For display of values of a fader. (Sander)
 }
 
 - (void)setIntValueFromDoc:(int)aValue;

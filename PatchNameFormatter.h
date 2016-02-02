@@ -9,8 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface PatchNameFormatter : NSFormatter {
-
+@interface PatchNameFormatter : NSFormatter
+{
 	int maxLength;
 	NSCharacterSet* characterSet;
 }

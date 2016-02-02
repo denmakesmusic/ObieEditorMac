@@ -2,12 +2,12 @@
 
 @implementation StorePatchPanel
 
--(int)bankNumber
+- (int)bankNumber
 {
 	return [bankNumber intValue];
 }
 
--(int)patchNumber
+- (int)patchNumber
 {
 	return [patchNumber intValue];
 }

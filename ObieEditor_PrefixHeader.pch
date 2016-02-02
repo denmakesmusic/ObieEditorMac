@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  ObieEditor2
+//
+//  Created by sander on 02-08-15.
+//
+//
+
+#ifndef ObieEditor2_PrefixHeader_pch
+#define ObieEditor2_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <Availability.h>
+#import <Foundation/Foundation.h>
+
+#endif

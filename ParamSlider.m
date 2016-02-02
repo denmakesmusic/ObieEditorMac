@@ -8,6 +8,7 @@
 - (void)setUI:(NSDictionary*)aObject description:(Description*)aDescription
 {
 	offset = [aDescription getOffset:aObject];
+    AddValueDisplay = [aDescription getAddValueDisplay:aObject];                            // Added for value display (Sander)
 	
 	[self setTarget:self];
 	[self setAction:@selector(moveAction:)];
@@ -18,8 +19,10 @@
 	int oTag = [sender tag];
 	int oParamNum = oTag;
 	int oValue = [sender intValue] - offset;
+    int oAddValueDisplay = AddValueDisplay;                                                 // added Sander.
 	MyDocument *myDoc = [[NSDocumentController sharedDocumentController] currentDocument];
-	if (oTag > 20000)
+//	NSLog(@"moveAction %d tag=%d", oValue, oTag);
+    if (oTag > 20000)
 	{
 		// poids fort
 		oParamNum = (int)(oTag - 20000);
@@ -33,21 +36,21 @@
 	}
 	// mettre a jour le document
 	[myDoc setParameter:oValue At:oParamNum];
-	
-	// cas particulier (aurait necessite d'autres classes...
-	if (oTag == 20)
-	{
-		// balance DCO1 DCO2
-		NSTextField *oTF = [[self superview] viewWithTag:999];
-		[oTF setIntValue:oValue];
-	}
+    
+    if(oAddValueDisplay)                        // Is AddValueDisplay=1, for this parameter (sounddesc.plist)? If TRUE, send value to tag + 1000.(Sander)
+    {
+        NSTextField *oTF = [[self superview] viewWithTag:(oTag + 1000)];
+        [oTF setIntValue:oValue];
+    }
 }
 
 - (void)setIntValueFromDoc:(int)aValue
 {
 	int oTag = [self tag];
-	//NSLog(@"setIntValueFromDoc %d tag=%d", aValue, oTag);
+//	NSLog(@"setIntValueFromDoc %d tag=%d", aValue, oTag);
 	int oValue = aValue;
+    int oAddValueDisplay = AddValueDisplay;
+    
 	if (oTag > 20000)
 	{
 		// poids fort
@@ -60,14 +63,13 @@
 	}
 	oValue += offset;
 	[super setIntValue:oValue];
+    
+    if(oAddValueDisplay)                        // Is AddValueDisplay=1, for this parameter (sounddesc.plist)? If TRUE, send value to tag + 1000.(Sander)
+    {
+        NSTextField *oTF = [[self superview] viewWithTag:(oTag + 1000)];
+        [oTF setIntValue:oValue];
+    }
 
-	// cas particulier (aurait necessite d'autres classes...
-	if (oTag == 20)
-	{
-		// balance DCO1 DCO2
-		NSTextField *oTF = [[self superview] viewWithTag:999];
-		[oTF setIntValue:oValue];
-	}
 }
 
 @end

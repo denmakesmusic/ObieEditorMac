@@ -21,7 +21,7 @@
 	// send global parameters
 - (IBAction)sendGlobalParameters:(id)sender;
 
--(void)updateGlobalParameters;
+- (void)updateGlobalParameters;
 
 - (void)setObjectUI:(NSView*)aView dico:(id)aDico tag:(int)aTag;
 

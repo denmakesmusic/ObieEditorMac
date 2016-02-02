@@ -38,7 +38,7 @@ static void MyReadProc(const MIDIPacketList *pktlist, void *readProcRefCon, void
 	}
 	MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	
 	
-	//NSLog(@"MyReadProc numPackets = %d\n", pktlist->numPackets);
+//	NSLog(@"MyReadProc numPackets = %u", (unsigned int)pktlist->numPackets);
 	int j;
 	for (j = 0; j < pktlist->numPackets; ++j) 
 	{
@@ -96,18 +96,20 @@ static MIDIDriver *sharedInstance = NULL;
 //	NSLog(@"setMIDIInput = %d output = %d", aInputPort, aOutputPort);
 	mSource = MIDIGetSource(aInputPort);
 	OSStatus oStatus = MIDIPortConnectSource(mInPort, mSource, mSource);
-//	NSLog(@"MIDIPortConnectSource %d\n", oStatus);
+    if (oStatus){
+    NSLog(@"MIDIPortConnectSource %d\n", (int)oStatus);
+    }
 		
 	mDest = MIDIGetDestination(aOutputPort);
 	mInputPortNumber = aInputPort;
 	mOutputPortNumber = aOutputPort;
 }
 
--(int)inputPortNumber
+- (int)inputPortNumber
 {
 	return mInputPortNumber;
 }
--(int)outputPortNumber
+- (int)outputPortNumber
 {
 	return mOutputPortNumber;
 }
@@ -123,7 +125,8 @@ static MIDIDriver *sharedInstance = NULL;
 	oData[4] = (Byte)aParameter;
 	oData[5] = (Byte)(aValue & 0x7F);
 	oData[6] = EOX;
-	
+//	NSLog(@"Send parameter: %d, value %d", oData[4], oData[5]);
+    
 	MIDISysexSendRequest *request = calloc( 1, sizeof(MIDISysexSendRequest));	
 	request->destination = mDest;
 	request->data = oData;
@@ -131,7 +134,9 @@ static MIDIDriver *sharedInstance = NULL;
 	request->completionProc = &SysexCompleteProc;
 	
 	OSStatus oStatus = MIDISendSysex(request);
-	//printf("sendParameter status = %d\n", oStatus);
+    if (oStatus){
+    NSLog(@"sendParameter status = %d", (int)oStatus);
+    }
 }
 
 
@@ -156,14 +161,17 @@ static MIDIDriver *sharedInstance = NULL;
 	request->completionProc = &SysexCompleteProc;
 	
 	OSStatus oStatus = MIDISendSysex(request);
-	//printf("sendParameter status = %d\n", oStatus);
+    if (oStatus){
+        NSLog(@"sendMatrixPath status = %d\n", (int)oStatus);
+    }
 }
 
 // aType 0,1, 3 ou 4
 // aNumber 0 si type = 0 ou 3
 - (void)sendRequestDataType:(int)aType Number:(int)aNumber
 {
-	Byte *oData = calloc(1, 7);	
+//    NSLog(@"sendRequestDataType.");
+    Byte *oData = calloc(1, 7);
 	oData[0] = SOX;
 	oData[1] = IDC;
 	oData[2] = IDE;
@@ -183,6 +191,9 @@ static MIDIDriver *sharedInstance = NULL;
 	mReceiveCount = 0;
 	
 	OSStatus oStatus = MIDISendSysex(request);
+    if (oStatus){
+        NSLog(@"sendRequestDataType status = %d", (int)oStatus);
+    }
 }
 
 // envoi d'un patch dans le buffer d'edition
@@ -225,6 +236,9 @@ static MIDIDriver *sharedInstance = NULL;
 	request->completionProc = &SysexCompleteProc;
 	
 	OSStatus oStatus = MIDISendSysex(request);
+    if (oStatus){
+        NSLog(@"sendPatch status = %d", (int)oStatus);
+    }
 }
 
 // envoi des parametres globaux
@@ -258,6 +272,9 @@ static MIDIDriver *sharedInstance = NULL;
 	request->completionProc = &SysexCompleteProc;
 	
 	OSStatus oStatus = MIDISendSysex(request);
+    if (oStatus){
+        NSLog(@"sendMasterData status = %d", (int)oStatus);
+    }
 }
 
 
@@ -279,26 +296,34 @@ static MIDIDriver *sharedInstance = NULL;
 	request->completionProc = &SysexCompleteProc;
 	
 	OSStatus oStatus = MIDISendSysex(request);
+    if (oStatus){
+        NSLog(@"setBank status = %d", (int)oStatus);
+    }
 }
 
 // sauvegarde un patch
 - (void)storePatch:(uint8_t*)aPatch Bank:(int)aBankNumber Number:(int)aPatchNumber
 {
-	[self setBank:aBankNumber];
+//	NSLog(@"StorePatch");
+    [self setBank:aBankNumber];
 	[self sendPatch:aPatch Type:1 Number:aPatchNumber];
 }
 
 // recuperer un patch recu
 - (int)getReceivedBytes:(uint8_t *)aPatch maxSize:(int)aMaxSize
 {
-	int i = 0;
+//	NSLog(@"getReceivedBytes | Patch? = %d | MaxSize = %d", (uint8_t)aPatch, aMaxSize);
+    int i = 0;
 	uint8_t *p = aPatch;
 	int count = 0;
 	bool oSysexStart = FALSE;
-	for (i = 0; i < mReceiveCount;)
+//    NSLog(@"ReceiveCount = %d", mReceiveCount);
+    
+    for (i = 0; i < mReceiveCount;)
 	{
 		int oByte = mReceiveBuffer[i];	
-		//printf("%02x ", oByte);	
+//		printf("%03x %02x| ", i, oByte);   // Display dump
+    
 		if (oByte == EOX)
 		{
 			break;
@@ -306,8 +331,9 @@ static MIDIDriver *sharedInstance = NULL;
 		else
 		if (oSysexStart)
 		{
-			*p = (mReceiveBuffer[i] | (mReceiveBuffer[i+1] << 4)) & 0x7F;
-			//printf("%d %02x / %02x = %02x \n ", count, mReceiveBuffer[i], mReceiveBuffer[i+1], *p);
+		//	*p = (mReceiveBuffer[i] | (mReceiveBuffer[i+1] << 4)) & 0x7F;
+            *p = (mReceiveBuffer[i]  | (mReceiveBuffer[i+1] << 4));         // Added Sander: Bank Lock Enable MSB is lost this way,  & 0x7F is applied in param.objects if needed.
+//			printf("%d %02x / %02x = %02x \n ", count, mReceiveBuffer[i], mReceiveBuffer[i+1], *p);
 			i += 2;
 			count++;
 			p++;
@@ -332,11 +358,13 @@ static MIDIDriver *sharedInstance = NULL;
 		else
 		{
 			i++;
+//            NSLog(@"counter i = %d", i);
 		}
 	}
-	//printf("\ncount = %d\n", count);
+//    printf("\ncount = %d\n", count);
 	return count;
-}
+    }
+
 
 - (NSArray *)midiInputs
 {

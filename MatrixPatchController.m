@@ -19,9 +19,8 @@
 - (void)windowDidLoad
 {
 //	NSLog(@"windowDidLoad %@ %d\n", keyMode, [self isWindowLoaded]);
-
-
-	MyDocument *doc = [self document];
+    
+    MyDocument *doc = [self document];
 	NSWindow *oWin = [self window];
 	NSView *oView = [oWin contentView];
 	//NSLog(@"view = %@", oView);
@@ -97,6 +96,7 @@
 - (IBAction)patchNameAction:(id)sender
 {
 	// pas de parametre pour le nom
+    NSLog(@"PAtchNameAction from MatrixPatchController.");
 	[[self document] setPatchName:[mPatchName stringValue]]; 
 }
 
@@ -123,7 +123,7 @@
 }
 
 // update global parameter display with document values
--(void)updateGlobalParameters
+- (void)updateGlobalParameters
 {
 /*
 	MyDocument *oDoc = [self document];

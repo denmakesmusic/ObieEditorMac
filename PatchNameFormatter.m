@@ -34,32 +34,34 @@
 	   originalSelectedRange:(NSRange)origSelRange
 			errorDescription:(NSString **)error 
 {
-//	NSLog(@"*partialStringPtr = %@", *partialStringPtr);
-//	NSLog(@"origSelRange = %d , %d", origSelRange.location, origSelRange.length);
+//	NSLog(@"*partialStringPtr = >%@<", *partialStringPtr);
 	
     if ([*partialStringPtr length] > maxLength) {
+//        NSLog(@"partialString > maxLength: %d", maxLength);
         return NO;
     }
 	
 	NSString* oNewStr = [*partialStringPtr uppercaseString];
+//    NSLog(@"patchNameFormatter | newStr = >%@<", oNewStr);
 	int i;
 	for (i = 0; i < [oNewStr length]; i++)
 	{
-		if ([characterSet characterIsMember:[oNewStr characterAtIndex:i]] == FALSE)
+//        NSLog(@"i = %d | stringLength = %lu", i, (unsigned long)[oNewStr length]);
+        if ([characterSet characterIsMember:[oNewStr characterAtIndex:i]] == FALSE)
 		{
-			return NO;
+            return NO;
 		}
 	}
 	
     if (![*partialStringPtr isEqual:[*partialStringPtr uppercaseString]]) {
 		*partialStringPtr = [*partialStringPtr uppercaseString];
+//        NSLog(@"*partialStringPtr uppercase corrected.");
 		return NO;
     }
-	
+
+//    NSLog(@"Return YES: i = %d | *partialStringPtr = >%@<", i, *partialStringPtr);
     return YES;
 }
-
-
 
 
 - (NSAttributedString *)attributedStringForObjectValue:(id)anObject withDefaultAttributes:(NSDictionary *)attributes {

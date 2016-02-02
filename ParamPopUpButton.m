@@ -10,7 +10,7 @@
 // selectionne l'element courant 
 - (void)setUI:(NSDictionary*)aObject description:(Description*)aDescription
 {
-	NSString *tagStr = [NSString stringWithFormat:@"%d", [self tag]];
+	NSString *tagStr = [NSString stringWithFormat:@"%ld", (long)[self tag]];
 	//NSLog(@"ParamPopUpButton awake tag = %@", tagStr);
 	NSArray *oArray = [aDescription getValueNames:aObject];
 	if (oArray == nil)
@@ -50,6 +50,9 @@
 		oValue = [num intValue];
 	}
 	MyDocument *myDoc = [[NSDocumentController sharedDocumentController] currentDocument];
+    
+//    NSLog(@"Tag= %d | ParamNR= %d | outValue= %d | mask= %d", oTag, oParamNum, oValue, mask);
+    
 	if (oTag > 30000)
 	{
 		// recuperer l numero de parametre a partir de 30xxx, 31xxx, 32xxx
@@ -80,7 +83,8 @@
 		oParamNum = oTag - 10000;
 		oValue = ([myDoc getParameter:oParamNum] & 0xF0 ) | (oValue);
 	}
-	// mettre a jour le document
+//	NSLog(@"Tag= %d | ParamNR= %d | outValue= %d | mask= %d", oTag, oParamNum, oValue, mask);
+    // mettre a jour le document
 	[myDoc setParameter:oValue At:oParamNum];
 	
 }
@@ -88,7 +92,7 @@
 - (void)setIntValueFromDoc:(int)aValue
 {
 	int oTag = [self tag];
-	//NSLog(@"setIntValueFromDoc %d tag=%d", aValue, oTag);
+//	NSLog(@"setIntValueFromDoc %d tag=%d", aValue, oTag);
 	int oValue = aValue;
 	if (oTag > 30000)
 	{

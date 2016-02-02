@@ -16,22 +16,29 @@
 
 - (void)checkAction:(id)sender
 {
-	int oTag = [sender tag];
+  //  NSLog(@"checkAction");
+    int oTag = [sender tag];
 	int oParamNum = oTag;
 	int oValue = [sender intValue];
 	MyDocument *myDoc = [[NSDocumentController sharedDocumentController] currentDocument];
 	if (oTag > 30000)
 	{
-		// recuperer l numero de parametre a partir de 30xxx, 31xxx, 32xxx
+	//	NSLog(@"Tag= %d | intValue= %d | mask= %d", oTag, oValue, mask);
+        // recuperer l numero de parametre a partir de 30xxx, 31xxx, 32xxx
 		oParamNum = (int)(oTag - 30000);
 		while (oParamNum > 1000)
 		{
 			oParamNum -= 1000;
 		}
-		int oRest = mask % 2;
-		// pour un masque de 1 bit ce calcul fonctionne
-		int oFact = log2(mask) * (1 - oRest);
-		oValue = ([myDoc getParameter:oParamNum] & ~mask ) | (oValue << oFact);
+        if (oValue == 0)                                     // Code simplification (Sander)
+        {
+            oValue = ([myDoc getParameter:oParamNum] & ~mask);
+        }
+        else if (oValue == 1)
+        {
+            oValue = ([myDoc getParameter:oParamNum] | mask);
+        }
+
 	}
 
 	// mettre a jour le document
@@ -44,9 +51,9 @@
 	int oTag = [self tag];
 	if (oTag > 30000)
 	{
-		int oRest = mask % 2;
-		int oFact = log2(mask) * (1 - oRest);
-		oValue = (aValue & mask) >> oFact;
+//		  NSLog(@"Tag = %d | memValue = %d", oTag, aValue);
+        oValue = (aValue & mask);                           // Code simplification (Sander)
+//        NSLog(@"oValue = %d", oValue);
 	}
 	[super setIntValue:oValue];
 }

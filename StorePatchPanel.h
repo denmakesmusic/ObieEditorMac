@@ -8,8 +8,8 @@
     IBOutlet NSTextField *patchNumber;
 }
 
--(int)bankNumber;
--(int)patchNumber;
+- (int)bankNumber;
+- (int)patchNumber;
 
 - (IBAction)okAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;

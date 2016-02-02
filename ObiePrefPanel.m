@@ -43,33 +43,39 @@
 	[sendPatchForENV1_SUSTAIN setState:(oSendPatchForENV1 ? NSOnState : NSOffState)];
 	BOOL oSendPatchForENV2 = [oCont sendPatchForENV2TOVCA2];
 	[sendPatchForENV2TOVCA2 setState:(oSendPatchForENV2 ? NSOnState : NSOffState)];
+    BOOL oSendPatchForLFO = [oCont sendPatchForLFOSAMPLESOURCE];
+    [sendPatchForLFOSAMPLESOURCE setState:(oSendPatchForLFO ? NSOnState : NSOffState)];
 }
 
--(int)midiInputPort
+- (int)midiInputPort
 {
 	return [midiInputPort indexOfSelectedItem];
 }
 
--(int)midiOutputPort
+- (int)midiOutputPort
 {
 	return [midiOutputPort indexOfSelectedItem];
 }
 
--(bool)sendPatchOnOpen
+- (bool)sendPatchOnOpen
 {
 	return [sendPatchOnOpen state] == NSOnState;
 }
 
--(bool)sendPatchForENV1_SUSTAIN
+- (bool)sendPatchForENV1_SUSTAIN
 {
 	return [sendPatchForENV1_SUSTAIN state] == NSOnState;
 }
 
--(bool)sendPatchForENV2TOVCA2
+- (bool)sendPatchForENV2TOVCA2
 {
 	return [sendPatchForENV2TOVCA2 state] == NSOnState;
 }
 
+- (bool)sendPatchForLFOSAMPLESOURCE
+{
+    return [sendPatchForLFOSAMPLESOURCE state] == NSOnState;
+}
 
 
 

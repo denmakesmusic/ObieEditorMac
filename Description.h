@@ -30,5 +30,6 @@
 - (int)getDisplayMin:(NSDictionary*)aObject;
 - (int)getDisplayMax:(NSDictionary*)aObject;
 - (int)offsetFrom:(NSDictionary*)aObject;
+- (int)getAddValueDisplay:(NSDictionary*)aObject;    // added Sander: for displaying fader values.
 
 @end

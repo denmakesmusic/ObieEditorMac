@@ -121,6 +121,13 @@ static Description *soundInstance = NULL;
 	return oOff;
 }
 
+- (int)getAddValueDisplay:(NSDictionary*)aObject    // Added Sander: for configurable ValueDisplay, for faders.
+{
+    NSNumber *num = [aObject objectForKey:@"AddValueDisplay"];
+    int oAddValueDisplay = num == NULL ? 0 : [num intValue];
+    return oAddValueDisplay;
+}
+
 
 
 @end
