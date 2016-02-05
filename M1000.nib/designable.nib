@@ -19,7 +19,6 @@
             <rect key="contentRect" x="16" y="153" width="1186" height="788"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="1186" height="788"/>
-            <value key="maxSize" type="size" width="1186" height="788"/>
             <value key="minFullScreenContentSize" type="size" width="1186" height="788"/>
             <view key="contentView" wantsLayer="YES" id="14">
                 <rect key="frame" x="0.0" y="0.0" width="1186" height="788"/>
@@ -37,7 +36,7 @@
                                     <subviews>
                                         <box title="ENV-2 | VCA" id="ADk-ci-t5u">
                                             <rect key="frame" x="521" y="400" width="341" height="166"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="Itr-9q-KT9">
                                                 <rect key="frame" x="2" y="2" width="337" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +231,7 @@
                                         </box>
                                         <box title="VCF" id="25">
                                             <rect key="frame" x="370" y="369" width="149" height="367"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="IwN-19-b9b">
                                                 <rect key="frame" x="2" y="2" width="145" height="350"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,7 +453,7 @@
                                         </box>
                                         <box title="LFO-1 | FREQ" id="dbY-zY-pfE">
                                             <rect key="frame" x="864" y="501" width="269" height="235"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="GaM-eo-ZE6">
                                                 <rect key="frame" x="2" y="2" width="265" height="218"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -703,7 +702,7 @@
                                         </box>
                                         <box title="LFO-2 | PW" id="DIu-Uz-YdA">
                                             <rect key="frame" x="864" y="262" width="269" height="235"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="mZ8-zx-fkJ">
                                                 <rect key="frame" x="2" y="2" width="265" height="218"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -954,7 +953,7 @@
                                         </box>
                                         <box title="ENV-1 | VCF" id="424">
                                             <rect key="frame" x="521" y="570" width="341" height="166"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="bG2-dZ-8bW">
                                                 <rect key="frame" x="2" y="2" width="337" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1149,7 +1148,7 @@
                                         </box>
                                         <box title="MIXER" id="sXd-zV-xdn">
                                             <rect key="frame" x="279" y="483" width="89" height="253"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="A97-Eg-jKl">
                                                 <rect key="frame" x="2" y="2" width="85" height="236"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1204,7 +1203,7 @@
                                         </box>
                                         <box title="RAMP-1 | LFO-1" id="KEM-Id-wum">
                                             <rect key="frame" x="521" y="141" width="168" height="85"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="x9C-om-2zX">
                                                 <rect key="frame" x="2" y="2" width="164" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1245,7 +1244,7 @@
                                         </box>
                                         <box title="RAMP-2 | LFO-2" id="AbL-gH-WPA">
                                             <rect key="frame" x="691" y="141" width="171" height="85"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="rle-YW-jcF">
                                                 <rect key="frame" x="2" y="2" width="167" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1286,7 +1285,7 @@
                                         </box>
                                         <box title="TRACKER" id="0wh-Ad-TfF">
                                             <rect key="frame" x="864" y="78" width="269" height="184"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="y3f-Pa-Kg7">
                                                 <rect key="frame" x="2" y="2" width="265" height="167"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1447,7 +1446,7 @@
                                         </box>
                                         <box title="COMMON" id="Zfb-Lo-Uw1">
                                             <rect key="frame" x="521" y="-2" width="341" height="139"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="U07-de-Zu8">
                                                 <rect key="frame" x="2" y="2" width="337" height="122"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1575,7 +1574,7 @@
                                         </imageView>
                                         <box autoresizesSubviews="NO" title="VCA" borderType="line" id="yZf-CF-pa6">
                                             <rect key="frame" x="279" y="272" width="240" height="108"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="F5Z-Ql-2Zs">
                                                 <rect key="frame" x="1" y="1" width="238" height="92"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1666,7 +1665,7 @@
                                         </box>
                                         <box title="MATRIX" id="nUx-ET-xOZ">
                                             <rect key="frame" x="7" y="-2" width="512" height="270"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="1yn-JT-lut">
                                                 <rect key="frame" x="2" y="2" width="508" height="253"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2205,7 +2204,7 @@
                                         </box>
                                         <box title="ENV-3 | FM" id="GdD-Bb-us3">
                                             <rect key="frame" x="521" y="230" width="341" height="166"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="esb-QU-JaY">
                                                 <rect key="frame" x="2" y="2" width="337" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2400,7 +2399,7 @@
                                         </box>
                                         <box title="DCO-1" id="54">
                                             <rect key="frame" x="7" y="515" width="270" height="221"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="TqB-n7-ng9">
                                                 <rect key="frame" x="2" y="2" width="266" height="204"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2600,7 +2599,7 @@
                                         </box>
                                         <box autoresizesSubviews="NO" title="DCO-2" borderType="line" id="zCe-aq-Rwr">
                                             <rect key="frame" x="7" y="272" width="270" height="239"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <view key="contentView" id="KHY-qb-fNW">
                                                 <rect key="frame" x="1" y="1" width="268" height="223"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
