@@ -15,7 +15,6 @@
 		8917FB45063A5DC300CBA672 /* PrefPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8917FB43063A5DC300CBA672 /* PrefPanel.nib */; };
 		8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */; };
 		8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */; };
-		8917FB8D063A788D00CBA672 /* StorePatchPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */; };
 		8917FB90063A7AAD00CBA672 /* StorePatchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */; };
 		8917FB91063A7AAD00CBA672 /* StorePatchPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */; };
 		891806E7063C096600C8B324 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 891806E6063C096600C8B324 /* help.html */; };
@@ -77,7 +76,6 @@
 		8917FB44063A5DC300CBA672 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PrefPanel.nib; sourceTree = "<group>"; };
 		8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ObiePrefPanel.h; sourceTree = "<group>"; };
 		8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ObiePrefPanel.m; sourceTree = "<group>"; };
-		8917FB8C063A788D00CBA672 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/StorePatchPanel.nib; sourceTree = "<group>"; };
 		8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = StorePatchPanel.m; sourceTree = "<group>"; };
 		8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = StorePatchPanel.h; sourceTree = "<group>"; };
 		891806E6063C096600C8B324 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				8915C5860636EEBF003AE2D1 /* GetPatchPanel.nib */,
 				8917FB43063A5DC300CBA672 /* PrefPanel.nib */,
-				8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */,
 				89B151610705B9810084C6A4 /* StoreSheet.nib */,
 			);
 			name = Resources;
@@ -346,7 +343,6 @@
 				C557FE8E1B62614F00DE6FB6 /* Matrix-1000-Logo.png in Resources */,
 				8917FB45063A5DC300CBA672 /* PrefPanel.nib in Resources */,
 				C557FE881B62612200DE6FB6 /* OberheimLogo640T.png in Resources */,
-				8917FB8D063A788D00CBA672 /* StorePatchPanel.nib in Resources */,
 				893FE2F21C6136D4004FEFA1 /* oberheim2.jpg in Resources */,
 				891806E7063C096600C8B324 /* help.html in Resources */,
 				C557FE8B1B62612200DE6FB6 /* oscillator_saw.png in Resources */,
@@ -414,14 +410,6 @@
 				8917FB44063A5DC300CBA672 /* English */,
 			);
 			name = PrefPanel.nib;
-			sourceTree = "<group>";
-		};
-		8917FB8B063A788D00CBA672 /* StorePatchPanel.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8917FB8C063A788D00CBA672 /* English */,
-			);
-			name = StorePatchPanel.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -289,22 +289,13 @@
 //	NSLog(@"storePatch");
 	NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
 	MyDocument *oDoc = [docCont currentDocument];
-/*
-	// version en dialog normal
-	StorePatchPanel *oPanel = [[StorePatchPanel alloc] initWithWindowNibName:@"StorePatchPanel"];
-	int oRes = [NSApp runModalForWindow:[oPanel window]];
-	if (oRes > 0)
-	{
-		[mMIDIDriver storePatch:[oDoc patch] Bank:[oPanel bankNumber] Number:[oPanel patchNumber]];
-	}
-	[oPanel release];
-	*/
-	// version sheet 
+	// version sheet
     if (!mStoreSheet)
 	{
         [NSBundle loadNibNamed: @"StoreSheet" owner: self];
-	}	
+	}
 	NSWindow *oWin = [oDoc windowForSheet];
+	
     [NSApp beginSheet: mStoreSheet
             modalForWindow: oWin
             modalDelegate: self
@@ -314,7 +305,7 @@
 
 - (IBAction)storeOKAction:(id)sender
 {
-    [NSApp endSheet:mStoreSheet];
+	[NSApp endSheet:mStoreSheet];
 	NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
 	MyDocument *oDoc = [docCont currentDocument];
 	[mMIDIDriver storePatch:[oDoc patch] Bank:[bankNumber intValue] Number:[patchNumber intValue]];

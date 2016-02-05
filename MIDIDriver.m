@@ -30,30 +30,26 @@ static void SysexCompleteProc(MIDISysexSendRequest *  request)
 
 static void MyReadProc(const MIDIPacketList *pktlist, void *readProcRefCon, void *srcConnRefCon)
 {
-	if (mReceivePointer == NULL || mReceivePointer >= (mReceiveBuffer + RECEIVE_BUFFER_SIZE)) 
+	if (mReceivePointer == NULL || mReceivePointer >= (mReceiveBuffer + RECEIVE_BUFFER_SIZE))
 	{
 		// depassement ?
-		NSLog(@"Depassement buffer de reception\n");
+		if (mReceivePointer != NULL) NSLog(@"Depassement buffer de reception\n");
+		// mReceivePointer n'est pas initialise donc on ne prend pas en compte ce qui arrive
 		return;
 	}
 	MIDIPacket *packet = (MIDIPacket *)pktlist->packet;	
 	
 //	NSLog(@"MyReadProc numPackets = %u", (unsigned int)pktlist->numPackets);
-	int j;
-	for (j = 0; j < pktlist->numPackets; ++j) 
+	for (int j = 0; j < pktlist->numPackets; ++j)
 	{
 	//	NSLog(@"packet %d len = %d\n", j, packet->length);
-// memcpy ne semble pas fonctionner...		
-//		memcpy(packet->data, mReceivePointer, packet->length);
-//		mReceivePointer += packet->length;
-//		mReceiveCount += packet->length;
-		int k;
-		for (k = 0; k < packet->length; k++)
+		for (int k = 0; k < packet->length; k++)
 		{
 			*mReceivePointer++ = packet->data[k];
 			//printf("%02x, ", packet->data[k]);
 			mReceiveCount++;
 		}
+		packet = MIDIPacketNext(packet);
 	}
 //	printf("\nreceive count = %d\n", mReceiveCount);
 }
@@ -62,32 +58,34 @@ static void MyReadProc(const MIDIPacketList *pktlist, void *readProcRefCon, void
 @implementation MIDIDriver
 
 // single instance
-static MIDIDriver *sharedInstance = NULL;
 
 + (MIDIDriver *)sharedInstance {
-    return sharedInstance ? sharedInstance : [[self alloc] init];
+	static dispatch_once_t pred;
+	__strong static MIDIDriver *sharedInstance = nil;
+	
+	dispatch_once(&pred, ^{
+		sharedInstance = [[MIDIDriver alloc] init];
+	});
+	return sharedInstance;
 }
 
 - (id)init {
-    if (sharedInstance) {   // We just have one instance of the MIDIDriver class, return that one instead
-        [self release];
-    } else if (self = [super init]) {
-        sharedInstance = self;
-
-//		NSLog(@"MIDIDriver init\n");
+	if (self = [super init]) {
 		// create client and ports
-		OSStatus oStatus = MIDIClientCreate(CFSTR("Matrix 1000 editor"), NULL, NULL, &mMIDIclient);	
-//		NSLog(@"MIDIClientCreate %d\n", oStatus);
+		OSStatus oStatus = MIDIClientCreate(CFSTR("Matrix 1000 editor"), NULL, NULL, &mMIDIclient);
+		if (oStatus) {
+			NSLog(@"MIDIClientCreate %d\n", oStatus);
+		}
 		oStatus = MIDIInputPortCreate(mMIDIclient, CFSTR("Input port"), MyReadProc, NULL, &mInPort);
-//		NSLog(@"MIDIInputPortCreate %d\n", oStatus);
+		if (oStatus) {
+			NSLog(@"MIDIInputPortCreate %d\n", oStatus);
+		}
 		oStatus = MIDIOutputPortCreate(mMIDIclient, CFSTR("Output port"), &mOutPort);
-//		NSLog(@"MIDIOutputPortCreate %d\n", oStatus);
+		if (oStatus) {
+			NSLog(@"MIDIOutputPortCreate %d\n", oStatus);
+		}
     }
-    return sharedInstance;
-}
-
-- (void)dealloc {
-    if (self != sharedInstance) [super dealloc];	// Don't free the shared instance
+    return self;
 }
 
 

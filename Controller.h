@@ -16,7 +16,7 @@
 	bool sendPatchForENV2TOVCA2;
     bool sendPatchForLFOSAMPLESOURCE;           // added Sander.
 	
-	id mStoreSheet;
+	IBOutlet id mStoreSheet;
 	IBOutlet id bankNumber;
     IBOutlet id patchNumber;
     
