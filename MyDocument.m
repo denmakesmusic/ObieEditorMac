@@ -9,13 +9,13 @@
 #import "MyDocument.h"
 
 #import "Controller.h"
-//#import "MatrixPatchController.h"
 #import "Description.h"
 #import "ParamTextField.h"
 #import "ParamPopUpButton.h"
 #import "ParamSlider.h"
 #import "ParamCheckbox.h"
 #import "Parameter.h"
+#import "Tools.h"
 
 enum
 {
@@ -538,14 +538,8 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
     else
     {
-        NSLog(@"getGlobalParameters: No response from M1000.");
-        
         NSWindow *oWin = [[[self windowControllers] objectAtIndex:0] window];// added Sander: for error message, if no response from m1000.
-        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-        [alert addButtonWithTitle:@"OK"];
-        [alert setMessageText:@"An error occurred: M-1000 did not respond.\n\nParameter values could not be loaded."];
-        [alert setAlertStyle:NSWarningAlertStyle];
-        [alert beginSheetModalForWindow:oWin modalDelegate:self didEndSelector:NULL contextInfo:nil];
+		[Tools showAlertWithMessage:@"An error occurred: M-1000 did not respond.\n\nParameter values could not be loaded." andWindow:oWin];
     }
 }
 
@@ -702,11 +696,7 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
 	else
 	{
-        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-		[alert addButtonWithTitle:@"OK"];
-		[alert setMessageText:@"Global parameters not initialized, do a GET first."];
-		[alert setAlertStyle:NSWarningAlertStyle];
-		[alert beginSheetModalForWindow:oWin modalDelegate:self didEndSelector:NULL contextInfo:nil];
+		[Tools showAlertWithMessage:@"Global parameters not initialized, do a GET first." andWindow:oWin];
 	}
 }
 

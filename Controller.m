@@ -3,10 +3,9 @@
 
 #import "Controller.h"
 #import "MyDocument.h"
-#import "MatrixPatchController.h"
 #import "GetPatchPanel.h"
 #import "ObiePrefPanel.h"
-
+#import "Tools.h"
 
 #define USERDEFAULT_KEY_MIDIINPUT @"inputPort"
 #define USERDEFAULT_KEY_MIDIOUTPUT @"outputPort"
@@ -124,12 +123,6 @@
     //[Preferences saveDefaults];
 }
 
-/*
--(BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
-{
-	return FALSE;
-}
-*/
 
 - (void)openPreferences:(id)sender
 {
@@ -243,8 +236,7 @@
 	}
 	if (oReceiveCount != PATCH_TAB_SIZE)
 	{
-		// TODO Alert
-		NSLog(@"No response from M1000.");
+		[Tools showAlertWithMessage:@"The Matrix-1000 did not respond to the request." andWindow:nil];
 		return;
 	}
 	// on instancie un nouveau document avec le patch recu
@@ -253,7 +245,7 @@
 	MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType] error:&makeUntitledDocumentOfTypeError];
 	if (makeUntitledDocumentOfTypeError != nil)
 	{
-		NSLog(@"Error: %@", makeUntitledDocumentOfTypeError);
+		[[NSAlert alertWithError:makeUntitledDocumentOfTypeError] runModal];
 		return;
 	}
 	NSData* oData = [NSData dataWithBytes:oBuffer length:PATCH_TAB_SIZE];
@@ -261,7 +253,7 @@
 	[oDoc readFromData:oData ofType:[MyDocument documentType] error:&oReadError];
 	if (oReadError != nil)
 	{
-		NSLog(@"Error: %@", oReadError);
+		[[NSAlert alertWithError:oReadError] runModal];
 		return;
 	}
 	[docCont addDocument:oDoc];
@@ -274,6 +266,7 @@
 }
 
 
+#pragma mark -- StoreSheet
 - (void)storePatch:(id)sender
 {
 //	NSLog(@"storePatch");

@@ -18,11 +18,11 @@
 		891806E7063C096600C8B324 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 891806E6063C096600C8B324 /* help.html */; };
 		891E5C710623302B000F7105 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 891E5C6F0623302B000F7105 /* Controller.h */; };
 		891E5C720623302B000F7105 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E5C700623302B000F7105 /* Controller.m */; };
-		891E5C9B06234CE0000F7105 /* MatrixPatchController.h in Headers */ = {isa = PBXBuildFile; fileRef = 891E5C9906234CE0000F7105 /* MatrixPatchController.h */; };
-		891E5C9C06234CE0000F7105 /* MatrixPatchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E5C9A06234CE0000F7105 /* MatrixPatchController.m */; };
 		8923F6550625CB34007C5516 /* MIDIDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8923F6530625CB34007C5516 /* MIDIDriver.h */; };
 		8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8923F6540625CB34007C5516 /* MIDIDriver.m */; };
 		8923F65A0625CB55007C5516 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8923F6590625CB55007C5516 /* CoreMIDI.framework */; };
+		89374F9C1C678B7300F67C8C /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89374F9B1C678B7300F67C8C /* Tools.m */; };
+		89374F9E1C678BA100F67C8C /* Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 89374F9D1C678BA100F67C8C /* Tools.h */; };
 		893FE2F21C6136D4004FEFA1 /* oberheim2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */; };
 		89412C9B1C65150F00DEA7CE /* checkmark.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C991C65150F00DEA7CE /* checkmark.icns */; };
 		89412C9C1C65150F00DEA7CE /* editname.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C9A1C65150F00DEA7CE /* editname.icns */; };
@@ -80,11 +80,11 @@
 		891806E6063C096600C8B324 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		891E5C6F0623302B000F7105 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		891E5C700623302B000F7105 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
-		891E5C9906234CE0000F7105 /* MatrixPatchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixPatchController.h; sourceTree = "<group>"; };
-		891E5C9A06234CE0000F7105 /* MatrixPatchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixPatchController.m; sourceTree = "<group>"; };
 		8923F6530625CB34007C5516 /* MIDIDriver.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = MIDIDriver.h; sourceTree = "<group>"; };
 		8923F6540625CB34007C5516 /* MIDIDriver.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = MIDIDriver.m; sourceTree = "<group>"; };
 		8923F6590625CB55007C5516 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		89374F9B1C678B7300F67C8C /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		89374F9D1C678BA100F67C8C /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oberheim2.jpg; sourceTree = "<group>"; };
 		89412C991C65150F00DEA7CE /* checkmark.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = checkmark.icns; sourceTree = "<group>"; };
 		89412C9A1C65150F00DEA7CE /* editname.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = editname.icns; sourceTree = "<group>"; };
@@ -185,8 +185,6 @@
 				2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */,
 				891E5C6F0623302B000F7105 /* Controller.h */,
 				891E5C700623302B000F7105 /* Controller.m */,
-				891E5C9906234CE0000F7105 /* MatrixPatchController.h */,
-				891E5C9A06234CE0000F7105 /* MatrixPatchController.m */,
 				8923F6530625CB34007C5516 /* MIDIDriver.h */,
 				8923F6540625CB34007C5516 /* MIDIDriver.m */,
 				8915C59A0636F2CA003AE2D1 /* GetPatchPanel.h */,
@@ -196,6 +194,8 @@
 				8915689A12EB63C300F4847E /* Parameter.h */,
 				894B459C13B628B200AFCC6B /* PatchNameFormatter.h */,
 				894B459D13B628B300AFCC6B /* PatchNameFormatter.m */,
+				89374F9B1C678B7300F67C8C /* Tools.m */,
+				89374F9D1C678BA100F67C8C /* Tools.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -266,10 +266,10 @@
 			files = (
 				8D15AC2A0486D014006FF6A4 /* MyDocument.h in Headers */,
 				891E5C710623302B000F7105 /* Controller.h in Headers */,
-				891E5C9B06234CE0000F7105 /* MatrixPatchController.h in Headers */,
 				8923F6550625CB34007C5516 /* MIDIDriver.h in Headers */,
 				8915C59C0636F2CA003AE2D1 /* GetPatchPanel.h in Headers */,
 				8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */,
+				89374F9E1C678BA100F67C8C /* Tools.h in Headers */,
 				89BC1E1C08B71FE50042F902 /* ParamCheckbox.h in Headers */,
 				89BC1E1E08B71FE50042F902 /* ParamPopUpButton.h in Headers */,
 				89BC1E2008B71FE50042F902 /* ParamSlider.h in Headers */,
@@ -368,10 +368,10 @@
 				8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
 				891E5C720623302B000F7105 /* Controller.m in Sources */,
-				891E5C9C06234CE0000F7105 /* MatrixPatchController.m in Sources */,
 				8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */,
 				8915C59D0636F2CA003AE2D1 /* GetPatchPanel.m in Sources */,
 				8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */,
+				89374F9C1C678B7300F67C8C /* Tools.m in Sources */,
 				89BC1E1D08B71FE50042F902 /* ParamCheckbox.m in Sources */,
 				89BC1E1F08B71FE50042F902 /* ParamPopUpButton.m in Sources */,
 				89BC1E2108B71FE50042F902 /* ParamSlider.m in Sources */,
