@@ -15,8 +15,6 @@
 		8917FB45063A5DC300CBA672 /* PrefPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8917FB43063A5DC300CBA672 /* PrefPanel.nib */; };
 		8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */; };
 		8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */; };
-		8917FB90063A7AAD00CBA672 /* StorePatchPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */; };
-		8917FB91063A7AAD00CBA672 /* StorePatchPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */; };
 		891806E7063C096600C8B324 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 891806E6063C096600C8B324 /* help.html */; };
 		891E5C710623302B000F7105 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 891E5C6F0623302B000F7105 /* Controller.h */; };
 		891E5C720623302B000F7105 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E5C700623302B000F7105 /* Controller.m */; };
@@ -26,6 +24,9 @@
 		8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8923F6540625CB34007C5516 /* MIDIDriver.m */; };
 		8923F65A0625CB55007C5516 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8923F6590625CB55007C5516 /* CoreMIDI.framework */; };
 		893FE2F21C6136D4004FEFA1 /* oberheim2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */; };
+		89412C9B1C65150F00DEA7CE /* checkmark.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C991C65150F00DEA7CE /* checkmark.icns */; };
+		89412C9C1C65150F00DEA7CE /* editname.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C9A1C65150F00DEA7CE /* editname.icns */; };
+		89412C9E1C65274000DEA7CE /* init.m1000p in Resources */ = {isa = PBXBuildFile; fileRef = 89412C9D1C65274000DEA7CE /* init.m1000p */; };
 		894B459E13B628B300AFCC6B /* PatchNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 894B459C13B628B200AFCC6B /* PatchNameFormatter.h */; };
 		894B459F13B628B300AFCC6B /* PatchNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B459D13B628B300AFCC6B /* PatchNameFormatter.m */; };
 		8965BFC606249F7B0002EF30 /* M1000.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8965BFC506249F7B0002EF30 /* M1000.nib */; };
@@ -76,8 +77,6 @@
 		8917FB44063A5DC300CBA672 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PrefPanel.nib; sourceTree = "<group>"; };
 		8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ObiePrefPanel.h; sourceTree = "<group>"; };
 		8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = ObiePrefPanel.m; sourceTree = "<group>"; };
-		8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = StorePatchPanel.m; sourceTree = "<group>"; };
-		8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = StorePatchPanel.h; sourceTree = "<group>"; };
 		891806E6063C096600C8B324 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		891E5C6F0623302B000F7105 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		891E5C700623302B000F7105 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
@@ -87,6 +86,9 @@
 		8923F6540625CB34007C5516 /* MIDIDriver.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = MIDIDriver.m; sourceTree = "<group>"; };
 		8923F6590625CB55007C5516 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
 		893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oberheim2.jpg; sourceTree = "<group>"; };
+		89412C991C65150F00DEA7CE /* checkmark.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = checkmark.icns; sourceTree = "<group>"; };
+		89412C9A1C65150F00DEA7CE /* editname.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = editname.icns; sourceTree = "<group>"; };
+		89412C9D1C65274000DEA7CE /* init.m1000p */ = {isa = PBXFileReference; lastKnownFileType = file; path = init.m1000p; sourceTree = "<group>"; };
 		894B459C13B628B200AFCC6B /* PatchNameFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchNameFormatter.h; sourceTree = "<group>"; };
 		894B459D13B628B300AFCC6B /* PatchNameFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchNameFormatter.m; sourceTree = "<group>"; };
 		8965BFC506249F7B0002EF30 /* M1000.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = M1000.nib; sourceTree = "<group>"; };
@@ -191,8 +193,6 @@
 				8915C59B0636F2CA003AE2D1 /* GetPatchPanel.m */,
 				8917FB46063A5DF100CBA672 /* ObiePrefPanel.h */,
 				8917FB47063A5DF100CBA672 /* ObiePrefPanel.m */,
-				8917FB8E063A7AAD00CBA672 /* StorePatchPanel.m */,
-				8917FB8F063A7AAD00CBA672 /* StorePatchPanel.h */,
 				8915689A12EB63C300F4847E /* Parameter.h */,
 				894B459C13B628B200AFCC6B /* PatchNameFormatter.h */,
 				894B459D13B628B300AFCC6B /* PatchNameFormatter.m */,
@@ -212,6 +212,9 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89412C9D1C65274000DEA7CE /* init.m1000p */,
+				89412C991C65150F00DEA7CE /* checkmark.icns */,
+				89412C9A1C65150F00DEA7CE /* editname.icns */,
 				C557FE8D1B62614F00DE6FB6 /* Matrix-1000-Logo.png */,
 				C557FE7F1B62612200DE6FB6 /* OberheimLogo.png */,
 				C557FE801B62612200DE6FB6 /* OberheimLogo640.icns */,
@@ -267,7 +270,6 @@
 				8923F6550625CB34007C5516 /* MIDIDriver.h in Headers */,
 				8915C59C0636F2CA003AE2D1 /* GetPatchPanel.h in Headers */,
 				8917FB48063A5DF100CBA672 /* ObiePrefPanel.h in Headers */,
-				8917FB91063A7AAD00CBA672 /* StorePatchPanel.h in Headers */,
 				89BC1E1C08B71FE50042F902 /* ParamCheckbox.h in Headers */,
 				89BC1E1E08B71FE50042F902 /* ParamPopUpButton.h in Headers */,
 				89BC1E2008B71FE50042F902 /* ParamSlider.h in Headers */,
@@ -333,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				89412C9E1C65274000DEA7CE /* init.m1000p in Resources */,
 				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				8965BFC606249F7B0002EF30 /* M1000.nib in Resources */,
@@ -347,9 +350,11 @@
 				891806E7063C096600C8B324 /* help.html in Resources */,
 				C557FE8B1B62612200DE6FB6 /* oscillator_saw.png in Resources */,
 				C557FE8A1B62612200DE6FB6 /* oscillator_pulse 90%.png in Resources */,
+				89412C9B1C65150F00DEA7CE /* checkmark.icns in Resources */,
 				C557FE861B62612200DE6FB6 /* OberheimLogo.png in Resources */,
 				89B151620705B9810084C6A4 /* StoreSheet.nib in Resources */,
 				89BC1ECA08B731540042F902 /* sounddesc.plist in Resources */,
+				89412C9C1C65150F00DEA7CE /* editname.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +372,6 @@
 				8923F6560625CB34007C5516 /* MIDIDriver.m in Sources */,
 				8915C59D0636F2CA003AE2D1 /* GetPatchPanel.m in Sources */,
 				8917FB49063A5DF100CBA672 /* ObiePrefPanel.m in Sources */,
-				8917FB90063A7AAD00CBA672 /* StorePatchPanel.m in Sources */,
 				89BC1E1D08B71FE50042F902 /* ParamCheckbox.m in Sources */,
 				89BC1E1F08B71FE50042F902 /* ParamPopUpButton.m in Sources */,
 				89BC1E2108B71FE50042F902 /* ParamSlider.m in Sources */,

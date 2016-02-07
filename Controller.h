@@ -1,7 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "MIDIDriver.h"
-#import "StorePatchPanel.h"
 #import "MyDocument.h"
 
 @interface Controller : NSObject <NSApplicationDelegate>
@@ -36,16 +35,8 @@
 - (IBAction)storeCancelAction:(id)sender;
 
 
-
 /* NSApplication delegate methods */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app;
-//-(BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication;
- 
-/* Action methods 
-- (void)createNew:(id)sender;
-- (void)open:(id)sender;
-- (void)saveAll:(id)sender;
-*/
 
 - (void)openPreferences:(id)sender;
 
@@ -53,7 +44,6 @@
 - (void)getPatch:(id)sender;
 - (void)storePatch:(id)sender;
 
-- (void)sendPatchFromDoc:(MyDocument *)aDoc;
 
 //
 // recupere le patch en cours d'edition

@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MyDocument">
             <connections>
+                <outlet property="editPatchNameButton" destination="gQf-yR-Ows" id="HXG-0Z-1ue"/>
                 <outlet property="mPatchName" destination="JDy-5N-RBk" id="GQX-Gz-mnb"/>
                 <outlet property="window" destination="174" id="428"/>
             </connections>
@@ -1500,10 +1501,10 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="JDy-5N-RBk">
-                                                        <rect key="frame" x="11" y="92" width="100" height="19"/>
+                                                        <rect key="frame" x="11" y="92" width="93" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Patch Name" bezelStyle="round" id="Tpb-Ph-73z">
-                                                            <font key="font" metaFont="smallSystem"/>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Patch Name" bezelStyle="round" id="Tpb-Ph-73z">
+                                                            <font key="font" size="12" name="Monaco"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -1539,7 +1540,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="xiz-EF-X9V">
-                                                        <rect key="frame" x="134" y="96" width="68" height="13"/>
+                                                        <rect key="frame" x="139" y="96" width="63" height="13"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="KEY MODE" id="mCL-K7-lTV">
                                                             <font key="font" metaFont="system" size="10"/>
@@ -1562,6 +1563,17 @@
                                                             </menu>
                                                         </popUpButtonCell>
                                                     </popUpButton>
+                                                    <button id="gQf-yR-Ows">
+                                                        <rect key="frame" x="107" y="92" width="18" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="editname" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="9IJ-Is-XHN">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="editPatchName:" target="-2" id="fdy-g9-Ibh"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -3429,6 +3441,7 @@
         <image name="Matrix-1000-Logo" width="640" height="100"/>
         <image name="OberheimLogo" width="572" height="109"/>
         <image name="OberheimLogo640T" width="640" height="640"/>
+        <image name="editname" width="512" height="512"/>
         <image name="oscillator_pulse 10%" width="233" height="132"/>
         <image name="oscillator_pulse 90%" width="233" height="132"/>
         <image name="oscillator_saw" width="233" height="148"/>

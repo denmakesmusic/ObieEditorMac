@@ -184,8 +184,10 @@ enum
 	
 	bool mValidGlobalParameters;
 	
-	// nom du patch
-	IBOutlet NSTextField *mPatchName;		
+	/** champ d'edition du nom du patch */
+	IBOutlet NSTextField *mPatchName;
+	/** bouton de validation de l'edition du nom de patch */
+	IBOutlet NSButton *editPatchNameButton;
 
 }
 
@@ -202,11 +204,13 @@ enum
 
 
 
-+ (MyDocument *)documentForWindow:(NSWindow *)window ;
 + (NSString *)documentType;
 
 - (void)setPatchName:(NSString *)aName;
 - (NSString *)patchName;
+
+-(IBAction)editPatchName:(id)sender;
+
 
 //
 // returns true if global parameters are initialized
@@ -227,15 +231,12 @@ enum
 //
 - (void)setParameter:(int)aValue At:(int)aIndex;
 
-//
-// positionne tous les parametres du modele 
-//
-- (void)setParameters:(uint8_t*)aPatch;
 
 //
 // retourne la valeur d'un parametre
 //
 - (int)getParameter:(int)aIndex;
+
 
 // positionne les parametres globaux
 - (void)setGlobalParameters:(uint8_t*)aData;

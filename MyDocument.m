@@ -97,6 +97,23 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
     return self;
 }
 
+/**
+	Appellee quand on fait new et un get patch ou get edit buffer (et pas open).
+ */
+-(MyDocument*)initWithType:(NSString*)typeName error:(NSError * _Nullable * _Nullable)outError
+{
+	MyDocument * oDoc = [super initWithType:typeName error:outError];
+	if (oDoc != nil)
+	{
+		// Charger un patch standard pour etre sur de partir de qq chose qui fonctionne.
+		// C'est inutile quand on vient de get edit buffer mais je ne vois pas trop ou le faire juste pour new
+		NSData* oData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"init" ofType:@".m1000p"]];
+		[oDoc readFromData:oData ofType:MyDocumentType error:outError];
+	}
+	return oDoc;
+}
+
+
 - (NSString *)windowNibName
 {
     // Override returning the nib file name of the document
@@ -104,78 +121,49 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
     return @"M1000";
 }
 
-/*
-- (void)makeWindowControllers
+
+- (void)showWindows
 {
-	//NSLog(@"makeWindowControllers\n");
-
-	Controller *cont = [NSApp delegate];
-	mMIDIDriver = [cont getMIDIDriver];		
-
-	[self addWindowController:[[MatrixPatchController alloc] initWithWindowNibName:@"M1000"]];
-}
-*/
-
-
-/* Return the document in the specified window.
-*/
-+ (MyDocument *)documentForWindow:(NSWindow *)window 
-{
-    id delegate = [window delegate];
-    return (delegate && [delegate isKindOfClass:[MyDocument class]]) ? delegate : nil;
-}
-
-
-- (NSData *)dataRepresentationOfType:(NSString *)aType
-{
-    // Insert code here to write your document from the given data.  You can also choose to override -fileWrapperRepresentationOfType: or -writeToFile:ofType: instead.
-	//NSLog(@"dataRepresentationOfType: %@", aType);
-    NSAssert([aType isEqualToString:MyDocumentType], @"Unknown type");
-
-	return [NSData dataWithBytes:mParameters length:FILE_PATCH_SIZE];
-}
-
-- (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)aType
-{
-    // Insert code here to read your document from the given data.  You can also choose to override -loadFileWrapperRepresentation:ofType: or -readFromFile:ofType: instead.
-    NSAssert([aType isEqualToString:MyDocumentType], @"Unknown type");
+	[super showWindows];
 	
-	NSRange oRange2 = {0, FILE_PATCH_SIZE};
-//    NSLog(@"LoadDataRepresentation.");
-	[data getBytes:mParameters range:oRange2];
-
 	// prevenir le controller
 	[[NSApp delegate] notifyNewDocument:self];
+}
+
+
+
+- (BOOL)readFromData:(NSData *)data
+			  ofType:(NSString *)typeName
+			   error:(NSError * _Nullable *)outError
+{
+	// Insert code here to read your document from the given data.  You can also choose to override -loadFileWrapperRepresentation:ofType: or -readFromFile:ofType: instead.
+	NSAssert([typeName isEqualToString:MyDocumentType], @"Unknown type");
+	
+	NSRange oRange2 = {0, FILE_PATCH_SIZE};
+	[data getBytes:mParameters range:oRange2];
 	
 	return YES;
 }
 
-// appele quand on fait file->revert
-- (BOOL)revertToContentsOfURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
+- (NSData *)dataOfType:(NSString *)typeName
+				 error:(NSError * _Nullable *)outError
 {
-	BOOL oReverted = [super revertToContentsOfURL:absoluteURL ofType:typeName error:outError];
-	if (oReverted)
-	{
-		// on rafraichit l'interface
-		NSArray* oWinContrs = [self windowControllers];
-		int i;
-		for (i = 0; i < [oWinContrs count]; i++)
-		{
-			[self windowControllerDidLoadNib:[oWinContrs objectAtIndex:i]];
-		}	
-	}
-	return oReverted;
+	// Insert code here to write your document from the given data.  You can also choose to override -fileWrapperRepresentationOfType: or -writeToFile:ofType: instead.
+	NSAssert([typeName isEqualToString:MyDocumentType], @"Unknown type");
+	
+	return [NSData dataWithBytes:mParameters length:FILE_PATCH_SIZE];
 }
 
-// accesseur pour les donnees, appeles par NSWindowController
 
-- (void)setPatchName:(NSString *)aName                  // Sander: Puts PatchName in mParameters
+
+- (void)setPatchName:(NSString *)aName
 {
+	// Sander: Puts PatchName in mParameters
     uint8_t aTempName[9];
 //    NSLog(@"setPatchName:>%@<",aName);
     [aName getCString:(char*)aTempName maxLength:9 encoding:NSASCIIStringEncoding];
-    int i = 0;                          // Sander: GetCString adds char at the end. For 8 chars you need 9. This overwrites param. 8. The for loop only copy's char(0-7)
-    for (i = 0; i <=7; i++) {
+    // Sander: GetCString adds char at the end. For 8 chars you need 9. This overwrites param. 8. The for loop only copy's char(0-7)
+    for (int i = 0; i <=7; i++) {
         mParameters[i] = aTempName[i];
     }
     
@@ -187,6 +175,51 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 {
     return [[NSString alloc] initWithBytes:mParameters length:8 encoding:NSASCIIStringEncoding];
 }
+
+
+
+/**
+	Action du bouton pour editer le nom du patch.
+	C'est un toggle entre l'edition et la desactivation pour eviter des problemes de focus.
+ */
+-(IBAction)editPatchName:(id)sender
+{
+	if ([mPatchName isEnabled])
+	{
+		// valider la modification
+		[self patchNameAction:sender];
+	}
+	else
+	{
+		// passer en edition
+		NSString* oStr = [mPatchName stringValue];
+		// trimmer les blancs, de toute facon ils sont ajoutes dans le patch a la validation
+		oStr = [oStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+		[mPatchName setStringValue:oStr];
+		[mPatchName setEnabled:TRUE];
+		[mPatchName becomeFirstResponder];
+		[editPatchNameButton setImage:[NSImage imageNamed:@"checkmark.icns"]];
+	}
+}
+
+
+- (IBAction)patchNameAction:(id)sender
+{
+	// pas de parametre pour le nom
+	// commencer par trimmer (ne pas garder les blancs au debut)
+	NSString *trimmedPatchName = [[mPatchName stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	// Added Sander. For patchnames shorter then 8 characters fill with " ".
+	NSString *str = [trimmedPatchName stringByPaddingToLength:8 withString:@" " startingAtIndex:0];
+	// So, very nice that this routine works, but the M1000 doesn't store patchnames anyway ;). Patchnames are "BNKx: xx" with banknr.&Patchnr.
+	[self setPatchName:str];
+	//NSLog(@"patchNameAction | str = >%@<", str);
+	[mPatchName setStringValue:trimmedPatchName];
+	[mPatchName setEnabled:FALSE];
+	[editPatchNameButton setImage:[NSImage imageNamed:@"editname.icns"]];
+}
+
+
+
 
 - (uint8_t*)patch                                       //used with sendPatch
 {
@@ -266,14 +299,6 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
 }
 
-- (void)setParameters:(uint8_t*)aPatch
-{
-	[self updateChangeCount:NSChangeDone];
-	memcpy(mParameters, aPatch, PATCH_TAB_SIZE);
-	NSString *oPatchName = [[NSString alloc] initWithBytes:aPatch length:8 encoding:NSASCIIStringEncoding];
-	[mPatchName setStringValue:oPatchName];
-//    NSLog(@"setParameters PatchName:%@", oPatchName);
-}
 
 - (int)getParameter:(int)aIndex // Reading parameters from SYNTH, with exceptions for DCO2_DETUNE and VCF_FREQ (Sander Version) ----------------<<<<
 {
@@ -297,6 +322,7 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 //    NSLog(@"GetParameeter_outValue  %i", oValue);
     return oValue;
 }
+
 
 // positionne les parametres globaux
 - (void)setGlobalParameters:(uint8_t*)aData
@@ -388,11 +414,7 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 		
 	// le nom du patch
 	[mPatchName setStringValue:[self patchName]];                                   // Display PatchName.
-//    [mPatchName setDelegate:self];                                                  // Removed Sander. Don't know what it's supposed to do, but it doesn't work.
-//    NSLog(@"WindowDidLoad_mPatchname: >%@<", [self patchName]);
 
-     
-    
 	
 	// global parameters
 	NSView *oTabGlobal = [[oTabs objectAtIndex:TAB_GLOBAL] view];
@@ -688,16 +710,6 @@ const int FILE_PATCH_SIZE = PATCH_TAB_SIZE;
 	}
 }
 
-
-- (IBAction)patchNameAction:(id)sender                                  // Sander: Index 8 out of bounds when typed patchname is less than 8 charachters.
-{
-	// pas de parametre pour le nom
-    NSString *str = [[mPatchName stringValue] stringByPaddingToLength:8 withString:@" " startingAtIndex:0]; // Added Sander. For patchnames shorter then 8 characters fill with " ".
-	[self setPatchName:str];
-//    NSLog(@"patchNameAction | str = >%@<", str);
-	[mPatchName setStringValue:str];        // So, very nice that this routine works, but the M1000 doesn't store patchnames anyway ;). Patchnames are "BNKx: xx" with banknr.&Patchnr.
-                                            // The Patchname does get stored in the file.
-}
 
 
 @end

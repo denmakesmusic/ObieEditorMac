@@ -5,7 +5,6 @@
 #import "MyDocument.h"
 #import "MatrixPatchController.h"
 #import "GetPatchPanel.h"
-#import "StorePatchPanel.h"
 #import "ObiePrefPanel.h"
 
 
@@ -213,76 +212,67 @@
 	{
 		[mMIDIDriver setBank:[oPanel bankNumber]];
 		[mMIDIDriver sendRequestDataType:1 Number:[oPanel patchNumber]];
-		//	[mMIDIDriver sendRequestDataType:1 Number:0];
-		uint8_t oBuffer[PATCH_TAB_SIZE];
-		MPSemaphoreID delay;	
-		MPCreateSemaphore(1, 0, &delay); // a binary semaphore
-		int oReceiveCount = 0;
-		if (oReceiveCount == 0)
-		{
-            MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
-			oReceiveCount = [mMIDIDriver getReceivedBytes:oBuffer maxSize:PATCH_TAB_SIZE];
-		}
-		if (oReceiveCount == PATCH_TAB_SIZE)
-		{
-            // on instancie un nouveau document avec le patch recu
-			NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
-//			MyDocument *oDoc = [docCont makeUntitledDocumentOfType:@"Matrix 1000 patch"];       // deprecated.
-            NSError *makeUntitledDocumentOfTypeError;                                           // added Sander.
-            MyDocument *oDoc = [docCont makeUntitledDocumentOfType:@"Matrix 1000 patch" error:&makeUntitledDocumentOfTypeError];
-			[oDoc setParameters:oBuffer];
-			[docCont addDocument:oDoc];
-			[oDoc makeWindowControllers];
-			NSWindowController *oWinCont = [[oDoc windowControllers] objectAtIndex:0];
-			[oWinCont window];
-			[oDoc showWindows];
-			// envoyer le patch au synthe
-			[self sendPatchFromDoc:oDoc];
-		}
-        else
-        {
-            NSLog(@"getPatch: No response from M1000.");
-        }
+		[self createDocumentFromMIDIReceive];
 	}
 	[oPanel release];
 }
 
+
 // recupere le patch en cours d'edition
 - (void)getEditBuffer:(id)sender
 {
-//    NSLog(@"GetEditBuffer");
+	//    NSLog(@"GetEditBuffer");
+	[mMIDIDriver sendRequestDataType:4 Number:0];
+	[self createDocumentFromMIDIReceive];
+}
 
-    [mMIDIDriver sendRequestDataType:4 Number:0];
+
+/**
+ Se met en attente d'un patch sur le MIDI IN et construit un nouveau document.
+ */
+-(void)createDocumentFromMIDIReceive
+{
 	uint8_t oBuffer[PATCH_TAB_SIZE];
-	MPSemaphoreID delay;	
+	MPSemaphoreID delay;
 	MPCreateSemaphore(1, 0, &delay); // a binary semaphore
-    int oReceiveCount = 0;
-    if (oReceiveCount == 0)             // changed while into if state ment, if there is response, it will come within 500ms.
+	int oReceiveCount = 0;
+	if (oReceiveCount == 0)             // changed while into if state ment, if there is response, it will come within 500ms.
 	{
-        MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
+		MPWaitOnSemaphore(delay, 500 * kDurationMillisecond);
 		oReceiveCount = [mMIDIDriver getReceivedBytes:oBuffer maxSize:PATCH_TAB_SIZE];
 	}
-	if (oReceiveCount == PATCH_TAB_SIZE)
+	if (oReceiveCount != PATCH_TAB_SIZE)
 	{
-		// on instancie un nouveau document avec le patch recu
-        NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
-//        MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType]];  // deprecated.
-        NSError *makeUntitledDocumentOfTypeError;
-        MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType] error:&makeUntitledDocumentOfTypeError];
-		[oDoc setParameters:oBuffer];
-		[docCont addDocument:oDoc];
-		[oDoc makeWindowControllers];
-		NSWindowController *oWinCont = [[oDoc windowControllers] objectAtIndex:0];
-		[oWinCont window];
-		[oDoc showWindows];
-        
-        [oDoc getGlobalParameters:self];  //added Sander; after loading Patch data, the GlobalParameters are also loaded.
+		// TODO Alert
+		NSLog(@"No response from M1000.");
+		return;
 	}
-    else
-    {
-        NSLog(@"getEditBuffer: No response from M1000.");
-    }
+	// on instancie un nouveau document avec le patch recu
+	NSDocumentController *docCont = [NSDocumentController sharedDocumentController];
+	NSError *makeUntitledDocumentOfTypeError = nil;
+	MyDocument *oDoc = [docCont makeUntitledDocumentOfType:[MyDocument documentType] error:&makeUntitledDocumentOfTypeError];
+	if (makeUntitledDocumentOfTypeError != nil)
+	{
+		NSLog(@"Error: %@", makeUntitledDocumentOfTypeError);
+		return;
+	}
+	NSData* oData = [NSData dataWithBytes:oBuffer length:PATCH_TAB_SIZE];
+	NSError* oReadError = nil;
+	[oDoc readFromData:oData ofType:[MyDocument documentType] error:&oReadError];
+	if (oReadError != nil)
+	{
+		NSLog(@"Error: %@", oReadError);
+		return;
+	}
+	[docCont addDocument:oDoc];
+	[oDoc makeWindowControllers];
+	NSWindowController *oWinCont = [[oDoc windowControllers] objectAtIndex:0];
+	[oWinCont window];
+	[oDoc showWindows];
+	
+	[oDoc getGlobalParameters:self];  //added Sander; after loading Patch data, the GlobalParameters are also loaded.
 }
+
 
 - (void)storePatch:(id)sender
 {
@@ -321,6 +311,8 @@
 	// indispensable sinon le sheet reste affiché
     [sheet orderOut:self];
 }
+
+
 
 @end
 

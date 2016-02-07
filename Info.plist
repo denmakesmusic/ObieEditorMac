@@ -38,7 +38,7 @@
 	<key>CFBundleSignature</key>
 	<string>obie</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.5-SNAPSHOT</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.music</string>
 	<key>NSHelpFile</key>
