@@ -23,6 +23,7 @@
 		8923F65A0625CB55007C5516 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8923F6590625CB55007C5516 /* CoreMIDI.framework */; };
 		89374F9C1C678B7300F67C8C /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89374F9B1C678B7300F67C8C /* Tools.m */; };
 		89374F9E1C678BA100F67C8C /* Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 89374F9D1C678BA100F67C8C /* Tools.h */; };
+		89374FA01C67B5C400F67C8C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 89374F9F1C67B5C400F67C8C /* README.md */; };
 		893FE2F21C6136D4004FEFA1 /* oberheim2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */; };
 		89412C9B1C65150F00DEA7CE /* checkmark.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C991C65150F00DEA7CE /* checkmark.icns */; };
 		89412C9C1C65150F00DEA7CE /* editname.icns in Resources */ = {isa = PBXBuildFile; fileRef = 89412C9A1C65150F00DEA7CE /* editname.icns */; };
@@ -85,6 +86,7 @@
 		8923F6590625CB55007C5516 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
 		89374F9B1C678B7300F67C8C /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		89374F9D1C678BA100F67C8C /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		89374F9F1C67B5C400F67C8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		893FE2F11C6136D4004FEFA1 /* oberheim2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oberheim2.jpg; sourceTree = "<group>"; };
 		89412C991C65150F00DEA7CE /* checkmark.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = checkmark.icns; sourceTree = "<group>"; };
 		89412C9A1C65150F00DEA7CE /* editname.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = editname.icns; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* ObieEditor */ = {
 			isa = PBXGroup;
 			children = (
+				89374F9F1C67B5C400F67C8C /* README.md */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
@@ -375,6 +378,7 @@
 				89BC1E1D08B71FE50042F902 /* ParamCheckbox.m in Sources */,
 				89BC1E1F08B71FE50042F902 /* ParamPopUpButton.m in Sources */,
 				89BC1E2108B71FE50042F902 /* ParamSlider.m in Sources */,
+				89374FA01C67B5C400F67C8C /* README.md in Sources */,
 				89BC1E2308B71FE50042F902 /* ParamTextField.m in Sources */,
 				89BC1E3308B720390042F902 /* Description.m in Sources */,
 				894B459F13B628B300AFCC6B /* PatchNameFormatter.m in Sources */,
@@ -497,40 +501,6 @@
 			};
 			name = "ObieEditor Deployment";
 		};
-		89D904D809801E110019CA15 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_LINK_OBJC_RUNTIME = NO;
-				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ObieEditor_PrefixHeader.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dqueffeulou.ObieEditor;
-				PRODUCT_NAME = ObieEditor;
-				SDKROOT = macosx;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
-			name = Default;
-		};
 		89D904DA09801E110019CA15 /* ObieEditor Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -549,14 +519,6 @@
 			};
 			name = "ObieEditor Deployment";
 		};
-		89D904DC09801E110019CA15 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx;
-			};
-			name = Default;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -565,20 +527,18 @@
 			buildConfigurations = (
 				89D904D609801E110019CA15 /* ObieEditor Development */,
 				89D904D709801E110019CA15 /* ObieEditor Deployment */,
-				89D904D809801E110019CA15 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = "ObieEditor Development";
 		};
 		89D904D909801E110019CA15 /* Build configuration list for PBXProject "ObieEditor2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89D904DA09801E110019CA15 /* ObieEditor Development */,
 				89D904DB09801E110019CA15 /* ObieEditor Deployment */,
-				89D904DC09801E110019CA15 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = "ObieEditor Development";
 		};
 /* End XCConfigurationList section */
 	};
